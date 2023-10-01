@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
     public List<User> list() {
         return userMapper.list();
     }
+
+    @Override
+    public void delete(Integer id) {
+        userMapper.deleteById(id);
+    }
 }

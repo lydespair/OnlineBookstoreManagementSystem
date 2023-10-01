@@ -8,4 +8,6 @@ public interface UserService {
 
 //    查询全部用户
     List<User> list();
+
+    void delete(Integer id);
 }
