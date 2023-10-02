@@ -31,4 +31,14 @@ public class UserServiceImpl implements UserService {
         user.setAddress("江苏南京");
         userMapper.insert(user);
     }
+
+    @Override
+    public User getById(Integer id) {
+        return userMapper.getById(id);
+    }
+
+    @Override
+    public void update(User user) {
+        userMapper.update(user);
+    }
 }

@@ -38,4 +38,18 @@ public class ManagerController {
         userService.add(user);
         return Result.success();
     }
+
+    @GetMapping("/{id}")
+    public Result getById (@PathVariable Integer id) {
+        log.info("根据id查找用户:{}", id);
+        User user = userService.getById(id);
+        return Result.success(user);
+    }
+
+    @PutMapping
+    public Result update(@RequestBody User user) {
+        log.info("修改用户:{}", user);
+        userService.update(user);
+        return Result.success();
+    }
 }
