@@ -7,7 +7,7 @@ import com.example.pojo.User;
 public interface UserService {
 
 //    查询全部用户
-    PageBean list(Integer page, Integer pageSize);
+    PageBean list(Integer page, Integer pageSize, String name);
 
     void delete(Integer id);
 

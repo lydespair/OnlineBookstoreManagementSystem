@@ -20,10 +20,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public PageBean list(Integer page, Integer pageSize) {
+    public PageBean list(Integer page, Integer pageSize, String name) {
         PageHelper.startPage(page, pageSize);
 
-        List<User> userList = userMapper.list();
+        List<User> userList = userMapper.list(name);
         Page<User> p = (Page<User>) userList;
         return new PageBean(p.getTotal(), p.getResult());
     }

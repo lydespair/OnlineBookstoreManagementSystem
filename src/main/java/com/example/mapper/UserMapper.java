@@ -9,8 +9,7 @@ import java.util.List;
 public interface UserMapper {
 
     //    查询全部用户
-    @Select("select * from user")
-    List<User> list();
+    List<User> list(String name);
 
     @Delete("delete from user where user_id = #{id}")
     void deleteById(Integer id);
