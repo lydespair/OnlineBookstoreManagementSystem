@@ -23,4 +23,12 @@ public class UserServiceImpl implements UserService {
     public void delete(Integer id) {
         userMapper.deleteById(id);
     }
+
+    @Override
+    public void add(User user) {
+        user.setUserPassword("999");
+        user.setTel("11301000323");
+        user.setAddress("江苏南京");
+        userMapper.insert(user);
+    }
 }
