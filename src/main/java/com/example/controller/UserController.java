@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.pojo.PageBean;
 import com.example.pojo.Result;
 import com.example.pojo.User;
 import com.example.service.UserService;
@@ -7,22 +8,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("/users")
-public class ManagerController {
+public class UserController {
 
     @Autowired
     private UserService userService;
 
     @GetMapping
-    public Result list() {
+    public Result list(@RequestParam(defaultValue = "1") Integer page,
+                       @RequestParam(defaultValue = "5") Integer pageSize) {
         log.info("查询全部的用户数据");
 
-        List<User> list = userService.list();
-        return Result.success(list);
+        PageBean pageBean = userService.list(page, pageSize);
+        return Result.success(pageBean);
     }
 
     @DeleteMapping("/{id}")

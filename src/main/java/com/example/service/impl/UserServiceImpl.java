@@ -1,8 +1,11 @@
 package com.example.service.impl;
 
 import com.example.mapper.UserMapper;
+import com.example.pojo.PageBean;
 import com.example.pojo.User;
 import com.example.service.UserService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +17,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
+
     @Override
-    public List<User> list() {
-        return userMapper.list();
+    public PageBean list(Integer page, Integer pageSize) {
+        PageHelper.startPage(page, pageSize);
+
+        List<User> userList = userMapper.list();
+        Page<User> p = (Page<User>) userList;
+        return new PageBean(p.getTotal(), p.getResult());
     }
 
     @Override
