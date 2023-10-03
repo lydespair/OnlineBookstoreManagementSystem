@@ -11,8 +11,7 @@ public interface UserMapper {
     //    查询全部用户
     List<User> list(String name);
 
-    @Delete("delete from user where user_id = #{id}")
-    void deleteById(Integer id);
+    void deleteById(List<Integer> ids);
 
     @Insert("insert into user (user_name, user_password, address, tel, email) " +
             "values (#{userName}, #{userPassword}, #{address}, #{tel}, #{email})")

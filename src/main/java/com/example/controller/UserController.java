@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -26,10 +28,10 @@ public class UserController {
         return Result.success(pageBean);
     }
 
-    @DeleteMapping("/{id}")
-    public Result delete(@PathVariable Integer id) {
-        log.info("根据id删除用户:{}", id);
-        userService.delete(id);
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable List<Integer> ids) {
+        log.info("批量删除, ids: {}", ids);
+        userService.delete(ids);
         return Result.success();
     }
 
