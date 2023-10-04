@@ -35,9 +35,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(User user) {
-        user.setUserPassword("999");
         user.setTel("11301000323");
-        user.setAddress("江苏南京");
+        user.setAddress("上海");
         userMapper.insert(user);
     }
 
@@ -49,5 +48,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User user) {
         userMapper.update(user);
+    }
+
+    @Override
+    public User login(User user) {
+        return userMapper.getByUsernameAndPassword(user);
     }
 }

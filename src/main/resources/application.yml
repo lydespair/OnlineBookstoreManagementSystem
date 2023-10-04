@@ -1,0 +1,21 @@
+aliyun:
+    oss:
+        accessKeyId: LTAI5t7G5Eou5WyiwPrgNm3x
+        accessKeySecret: RmcQTOVKRUV7sqmCY312dk5tx1gyKF
+        bucketName: kdl-you
+        endpoint: https://oss-cn-wuhan-lr.aliyuncs.com
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: 426255
+        url: jdbc:mysql://localhost:3306/bookseller
+        username: root
+    servlet:
+        multipart:
+            max-file-size: 20MB
+            max-request-size: 100MB
+
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

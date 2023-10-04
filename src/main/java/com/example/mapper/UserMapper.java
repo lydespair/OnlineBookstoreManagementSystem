@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
+    
 
     //    查询全部用户
     List<User> list(String name);
@@ -24,4 +25,7 @@ public interface UserMapper {
             "set user_name = #{userName}, user_password = #{userPassword}, user.address = #{address}, " +
             "user.tel = #{tel}, user.email = #{email} where user_id = #{userId}")
     void update(User user);
+
+    @Select("select * from user where user_name = #{userName} and user_password = #{userPassword}")
+    User getByUsernameAndPassword(User user);
 }

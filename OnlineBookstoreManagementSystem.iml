@@ -127,5 +127,6 @@
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:txw2:4.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:4.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:3.1.4" level="project" />
   </component>
 </module>
