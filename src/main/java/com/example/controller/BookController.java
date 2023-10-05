@@ -4,7 +4,6 @@ import com.example.pojo.PageBean;
 import com.example.pojo.Result;
 import com.example.service.BookService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,13 @@ public class BookController {
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5") Integer pageSize, Integer type, String name) {
         PageBean pageBean = bookService.page(page, pageSize, type, name);
+        return Result.success(pageBean);
+    }
+
+    @GetMapping("/ranks")
+    public Result rank(@RequestParam(defaultValue = "1") Integer page,
+                       @RequestParam(defaultValue = "5") Integer pageSize) {
+        PageBean pageBean = bookService.rank(page, pageSize);
         return Result.success(pageBean);
     }
 }
