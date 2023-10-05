@@ -21,8 +21,8 @@ public class BookController {
 
     @GetMapping
     public Result page(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "5") Integer pageSize, Integer type) {
-        PageBean pageBean = bookService.page(page, pageSize, type);
+                       @RequestParam(defaultValue = "5") Integer pageSize, Integer type, String name) {
+        PageBean pageBean = bookService.page(page, pageSize, type, name);
         return Result.success(pageBean);
     }
 }

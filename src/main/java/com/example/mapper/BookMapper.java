@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
 
-    List<Book> list(Integer type);
+    List<Book> list(Integer type, String name);
 
 }

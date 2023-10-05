@@ -28,11 +28,11 @@ public class BookServiceImpl implements BookService {
 //        return pageBean;
 //    }
     @Override
-    public PageBean page(Integer page, Integer pageSize, Integer type) {
+    public PageBean page(Integer page, Integer pageSize, Integer type, String name) {
 
         PageHelper.startPage(page, pageSize);
 
-        List<Book> bookList = bookMapper.list(type);
+        List<Book> bookList = bookMapper.list(type, name);
         Page<Book> p = (Page<Book>) bookList;
 
         return new PageBean(p.getTotal(), p.getResult());
