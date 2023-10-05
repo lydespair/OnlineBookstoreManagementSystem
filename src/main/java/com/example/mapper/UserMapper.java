@@ -18,8 +18,8 @@ public interface UserMapper {
             "values (#{userName}, #{userPassword}, #{address}, #{tel}, #{email})")
     void insert(User user);
 
-    @Select("select * from user where user_id = #{id}")
-    User getById(Integer id);
+    @Select("select * from user where user_name = #{name}")
+    User getByName(String name);
 
     @Update("update user " +
             "set user_name = #{userName}, user_password = #{userPassword}, user.address = #{address}, " +
@@ -28,4 +28,8 @@ public interface UserMapper {
 
     @Select("select * from user where user_name = #{userName} and user_password = #{userPassword}")
     User getByUsernameAndPassword(User user);
+
+    @Insert("insert into user (user_name, user_password)" +
+            "values (#{name}, #{password})")
+    void register(String name, String password);
 }

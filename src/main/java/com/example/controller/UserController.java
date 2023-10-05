@@ -42,10 +42,10 @@ public class UserController {
         return Result.success();
     }
 
-    @GetMapping("/{id}")
-    public Result getById (@PathVariable Integer id) {
-        log.info("根据id查找用户:{}", id);
-        User user = userService.getById(id);
+    @GetMapping("/{name}")
+    public Result getByName (@PathVariable String name) {
+        log.info("根据name查找用户:{}", name);
+        User user = userService.getByName(name);
         return Result.success(user);
     }
 

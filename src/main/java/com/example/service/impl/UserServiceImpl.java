@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(Integer id) {
-        return userMapper.getById(id);
+    public User getByName(String name) {
+        return userMapper.getByName(name);
     }
 
     @Override
@@ -53,5 +53,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(User user) {
         return userMapper.getByUsernameAndPassword(user);
+    }
+
+    @Override
+    public void register(String name, String password) {
+        userMapper.register(name, password);
     }
 }

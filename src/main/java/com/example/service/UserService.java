@@ -15,9 +15,11 @@ public interface UserService {
 
     void add(User user);
 
-    User getById(Integer id);
+    User getByName(String name);
 
     void update(User user);
 
     User login(User user);
+
+    void register(String name, String password);
 }
