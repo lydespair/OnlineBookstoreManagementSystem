@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.UserMapper">
+    <delete id="deleteById">
+        delete
+        from user
+        where user_id in
+        /*集合 元素 间隔符 开头 结尾*/
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--    条件查询(模糊查询)-->
+    <select id="list" resultType="com.example.pojo.User">
+        select *
+        from user
+        <where>
+            <if test="name != null and name != ''">
+                user_name like concat('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

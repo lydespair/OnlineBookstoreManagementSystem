@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
 
-    @Select("select * from book")
-    List<Book> list();
+    List<Book> list(Integer type);
+
 }

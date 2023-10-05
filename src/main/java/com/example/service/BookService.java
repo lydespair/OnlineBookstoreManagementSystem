@@ -4,5 +4,5 @@ import com.example.pojo.PageBean;
 
 public interface BookService {
 
-    PageBean page(Integer page, Integer pageSize);
+    PageBean page(Integer page, Integer pageSize, Integer type);
 }
