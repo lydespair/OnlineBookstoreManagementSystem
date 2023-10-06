@@ -1,7 +1,7 @@
 package com.example.service.impl;
 
 import com.example.mapper.UserMapper;
-import com.example.pojo.PageBean;
+import com.example.utils.PageBean;
 import com.example.pojo.User;
 import com.example.service.UserService;
 import com.github.pagehelper.Page;

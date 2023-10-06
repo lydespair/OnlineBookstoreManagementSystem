@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.pojo.Result;
+import com.example.utils.Result;
 import com.example.pojo.User;
 import com.example.service.UserService;
 import com.example.utils.JwtUtils;

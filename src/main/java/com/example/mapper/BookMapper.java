@@ -13,4 +13,6 @@ public interface BookMapper {
 
     @Select("select * from book order by count desc")
     List<Book> listBySale();
+
+    void delete(List<Integer> ids);
 }

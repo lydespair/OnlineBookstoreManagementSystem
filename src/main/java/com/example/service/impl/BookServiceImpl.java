@@ -2,7 +2,7 @@ package com.example.service.impl;
 
 import com.example.mapper.BookMapper;
 import com.example.pojo.Book;
-import com.example.pojo.PageBean;
+import com.example.utils.PageBean;
 import com.example.service.BookService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -46,5 +46,10 @@ public class BookServiceImpl implements BookService {
         Page<Book> p = (Page<Book>) bookList;
 
         return new PageBean(p.getTotal(), p.getResult());
+    }
+
+    @Override
+    public void delete(List<Integer> ids) {
+        bookMapper.delete(ids);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.pojo.PageBean;
+import com.example.utils.PageBean;
 import com.example.pojo.User;
 
 import java.util.List;

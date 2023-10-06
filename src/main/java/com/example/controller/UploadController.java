@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.pojo.Result;
+import com.example.utils.Result;
 import com.example.utils.AliOSSUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

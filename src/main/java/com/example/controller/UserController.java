@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.pojo.PageBean;
-import com.example.pojo.Result;
+import com.example.utils.PageBean;
+import com.example.utils.Result;
 import com.example.pojo.User;
 import com.example.service.UserService;
 import lombok.extern.slf4j.Slf4j;

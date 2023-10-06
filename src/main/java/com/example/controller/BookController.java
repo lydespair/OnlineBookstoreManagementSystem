@@ -1,14 +1,13 @@
 package com.example.controller;
 
-import com.example.pojo.PageBean;
-import com.example.pojo.Result;
+import com.example.utils.PageBean;
+import com.example.utils.Result;
 import com.example.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RequestMapping("/books")
@@ -30,5 +29,12 @@ public class BookController {
                        @RequestParam(defaultValue = "5") Integer pageSize) {
         PageBean pageBean = bookService.rank(page, pageSize);
         return Result.success(pageBean);
+    }
+
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable List<Integer> ids) {
+
+        bookService.delete(ids);
+        return Result.success();
     }
 }
