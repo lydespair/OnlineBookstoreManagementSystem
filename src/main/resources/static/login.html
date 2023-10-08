@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>登录</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="shortcut icon" href="img/mihuyo.ico">
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="login.js"></script>
+  <script src="register.js"></script>
 </head>
 <body>
 <section>
@@ -18,9 +21,10 @@
       <div class="formBx">
         <form action="">
           <h2>登录</h2>
-          <input type="text" name="" placeholder="用户名">
-          <input type="password" name="" placeholder="密码">
-          <input type="submit" name="" value="登录">
+          <input type="text" name=""  placeholder="用户名" v-model="userName" onblur="checkname();"/>
+          <input type="password" name="" placeholder="密码" v-model="password" onblur="checkpass();"/>
+          <input type="submit" name="" value="登录" onclick="checkall();"/>
+          <p class="signup"><a href="adminlogin.html" onclick="topggleForm();">管理员登录</a></p>
           <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
         </form>
       </div>
@@ -32,11 +36,11 @@
       <div class="formBx">
         <form action="">
           <h2>注册</h2>
-          <input type="text" name="" placeholder="用户名">
-          <input type="email" name="" placeholder="邮箱地址">
-          <input type="password" name="" placeholder="密码">
-          <input type="password" name="" placeholder="再次输入密码">
-          <input type="submit" name="" value="注册">
+          <input type="text" name="" v-model="userName" placeholder="用户名" onblur="checkregname();"/>
+          <input type="email" name="" v-model="email" placeholder="邮箱地址" >
+          <input type="password" name="" v-model="password" placeholder="密码" onblur="checkregpass();"/>
+          <input type="password" name="" placeholder="再次输入密码" onblur="checkregpassw();"/>
+          <input type="submit" name="" value="注册" onblur="checkmail();"/>
           <p class="signup">已有账号？<a href="#" onclick="topggleForm();">登录</a></p>
         </form>
       </div>
@@ -44,7 +48,110 @@
     </div>
 
   </div>
+
+
 </section>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"> </script>
+<script>
+  var app = new Vue({
+    el:"#container",
+    data:{
+      userName:"this.userName",
+      email:"this.email",
+      password:"this.password"
+    },
+    methods:{
+      <!-- 检查用户名 -->
+      checkname:function() {
+    var name = document.getElementById("username").value;
+    var reg = /^[\u4e00-\u9fa5a-zA-Z]{2,4}$/;
+    if(name==''){
+      document.getElementById("text").className="wrong";
+      document.getElementById("text").innerText="用户名不能为空!";
+      return false;
+    } else{
+      if (reg.test(name)) {
+        document.getElementById("text").innerText=" ";
+        return true;
+      } else {
+        document.getElementById("text").className="wrong";
+        document.getElementById("text").innerText="请输入有效的用户名";
+        return false;
+      }
+
+    }
+  },
+  <!-- 检查密码 -->
+      checkpass:function() {
+    var pass = document.getElementById("password").value;
+    var reg = /^[0-9a-zA-Z]{6,12}$/;
+    if(pass==''){
+      document.getElementById("password").className="wrong";
+      document.getElementById("password").innerText="密码不能为空!";
+      return false;
+    }
+    else{
+      if (reg.test(pass)) {
+        document.getElementById("password").innerText=" ";
+        return true;
+      } else {
+        document.getElementById("password").className="wrong";
+        document.getElementById("password").innerText="密码长度为6—12位";
+        return false;
+      }
+    }
+  },
+      <!-- 登录 -->
+      checkall:function(){
+    let xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+      // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+      xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+      // IE6, IE5 浏览器执行代码
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+      }
+    }
+        var json = {};
+        var userName = this.name;
+        var password = this.password;
+        xmlhttp.open("POST","http://localhost:8080/login",true);
+        xmlhttp.send(JSON.stringify(this.data));
+
+
+
+
+
+
+    var now=new Date();
+    var hour=now.getHours();
+    var minute=now.getMinutes();
+    var second=now.getSeconds();
+    var week=now.getDay();
+    var a=['日','一','二','三','四','五','六'];
+    var str="现在是："+hour+":"+minute+":"+second+",星期"+a[week];
+    if(checkname()==true&&checkpass()==true){
+      alert(str+"，登录成功！");
+      location.href="index.html";
+    }else{
+      alert("登录失败！");
+      return false;
+    }
+
+  }
+
+    }
+  })
+</script>
 <script type="text/javascript">
   function topggleForm(){
     var container = document.querySelector('.container');
