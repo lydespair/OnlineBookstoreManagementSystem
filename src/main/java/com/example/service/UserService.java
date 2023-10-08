@@ -27,4 +27,6 @@ public interface UserService {
     List<Order> cart(Integer state);
 
     void pay(Order order);
+
+    void addCart(Order order);
 }

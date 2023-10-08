@@ -76,4 +76,12 @@ public class UserServiceImpl implements UserService {
         order.setUpdateTime(LocalDateTime.now());
         orderMapper.add(order);
     }
+
+    @Override
+    public void addCart(Order order) {
+        order.setCreateTime(LocalDateTime.now());
+        order.setUpdateTime(LocalDateTime.now());
+        order.setState((short) 1);
+        orderMapper.addCart(order);
+    }
 }

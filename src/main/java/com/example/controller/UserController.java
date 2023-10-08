@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/{name}")
-    public Result getByName (@PathVariable String name) {
+    public Result getByName(@PathVariable String name) {
         log.info("根据name查找用户:{}", name);
         User user = userService.getByName(name);
         return Result.success(user);
@@ -58,11 +58,21 @@ public class UserController {
         return Result.success();
     }
 
-    //购物车
+    //查询订单 {
+//      state: 0 -> 已支付
+//             1 -> 待付款
+//    }
     @GetMapping("/cart")
     public Result cart(Integer state) {
         List<Order> orderList = userService.cart(state);
         return Result.success(orderList);
+    }
+
+    //加入购物车
+    @PostMapping("/addCart")
+    public Result addCart(@RequestBody Order order) {
+        userService.addCart(order);
+        return Result.success();
     }
 
     @PostMapping("/pay")
