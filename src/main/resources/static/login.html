@@ -6,9 +6,9 @@
   <title>登录</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/mihuyo.ico">
-  <script src="jquery-3.6.0.min.js"></script>
-  <script src="login.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="register.js"></script>
+
 </head>
 <body>
 <section>
@@ -21,9 +21,9 @@
       <div class="formBx">
         <form action="">
           <h2>登录</h2>
-          <input type="text" name=""  placeholder="用户名" v-model="userName" onblur="checkname();"/>
-          <input type="password" name="" placeholder="密码" v-model="password" onblur="checkpass();"/>
-          <input type="submit" name="" value="登录" onclick="checkall();"/>
+          <input type="text" name="" id="name" placeholder="用户名" />
+          <input type="password" name="" id="password" placeholder="密码" />
+          <input type="submit" name="" value="登录" onclick="login()"/>
           <p class="signup"><a href="adminlogin.html" onclick="topggleForm();">管理员登录</a></p>
           <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
         </form>
@@ -36,11 +36,11 @@
       <div class="formBx">
         <form action="">
           <h2>注册</h2>
-          <input type="text" name="" v-model="userName" placeholder="用户名" onblur="checkregname();"/>
-          <input type="email" name="" v-model="email" placeholder="邮箱地址" >
-          <input type="password" name="" v-model="password" placeholder="密码" onblur="checkregpass();"/>
-          <input type="password" name="" placeholder="再次输入密码" onblur="checkregpassw();"/>
-          <input type="submit" name="" value="注册" onblur="checkmail();"/>
+          <input type="text" name="" id="name2" placeholder="用户名"/>
+          <input type="email" name="" id="email" placeholder="邮箱地址"/>
+          <input type="password" name="" id="password2" placeholder="密码"/>
+          <input type="password" name="" placeholder="再次输入密码"/>
+          <input type="submit" name="" value="注册" onclick="register()" />
           <p class="signup">已有账号？<a href="#" onclick="topggleForm();">登录</a></p>
         </form>
       </div>
@@ -51,107 +51,66 @@
 
 
 </section>
-<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"> </script>
+
+
+
+//-------------------------------------------------------------------------------------------
+<!-- 登录方法 -->
 <script>
-  var app = new Vue({
-    el:"#container",
-    data:{
-      userName:"this.userName",
-      email:"this.email",
-      password:"this.password"
-    },
-    methods:{
-      <!-- 检查用户名 -->
-      checkname:function() {
-    var name = document.getElementById("username").value;
-    var reg = /^[\u4e00-\u9fa5a-zA-Z]{2,4}$/;
-    if(name==''){
-      document.getElementById("text").className="wrong";
-      document.getElementById("text").innerText="用户名不能为空!";
-      return false;
-    } else{
-      if (reg.test(name)) {
-        document.getElementById("text").innerText=" ";
-        return true;
-      } else {
-        document.getElementById("text").className="wrong";
-        document.getElementById("text").innerText="请输入有效的用户名";
-        return false;
+  function login() {
+    // 获取用户名和密码
+    let name = $("#name").val();
+    let password = $("#password").val();
+    $.ajax({
+      url : "/login",
+      type : "post",
+      // data表示发送的数据
+      data : JSON.stringify({
+        userName : name,
+        userPassword : password
+      }),
+      // 定义发送请求的数据格式为JSON字符串
+      contentType : "application/json;charset=UTF-8",
+      //定义回调响应的数据格式为JSON字符串,该属性可以省略
+      dataType : "json",
+      //成功响应的结果
+      success : function(data) {
+        if (data != null) {
+          location.href = "index.html";
+        }
       }
-
-    }
-  },
-  <!-- 检查密码 -->
-      checkpass:function() {
-    var pass = document.getElementById("password").value;
-    var reg = /^[0-9a-zA-Z]{6,12}$/;
-    if(pass==''){
-      document.getElementById("password").className="wrong";
-      document.getElementById("password").innerText="密码不能为空!";
-      return false;
-    }
-    else{
-      if (reg.test(pass)) {
-        document.getElementById("password").innerText=" ";
-        return true;
-      } else {
-        document.getElementById("password").className="wrong";
-        document.getElementById("password").innerText="密码长度为6—12位";
-        return false;
-      }
-    }
-  },
-      <!-- 登录 -->
-      checkall:function(){
-    let xmlhttp;
-    if (window.XMLHttpRequest)
-    {
-      // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-      xmlhttp=new XMLHttpRequest();
-    }
-    else
-    {
-      // IE6, IE5 浏览器执行代码
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function()
-    {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      {
-        document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-      }
-    }
-        var json = {};
-        var userName = this.name;
-        var password = this.password;
-        xmlhttp.open("POST","http://localhost:8080/login",true);
-        xmlhttp.send(JSON.stringify(this.data));
-
-
-
-
-
-
-    var now=new Date();
-    var hour=now.getHours();
-    var minute=now.getMinutes();
-    var second=now.getSeconds();
-    var week=now.getDay();
-    var a=['日','一','二','三','四','五','六'];
-    var str="现在是："+hour+":"+minute+":"+second+",星期"+a[week];
-    if(checkname()==true&&checkpass()==true){
-      alert(str+"，登录成功！");
-      location.href="index.html";
-    }else{
-      alert("登录失败！");
-      return false;
-    }
-
+    });
   }
-
-    }
-  })
 </script>
+
+<!-- 注册方法 -->
+
+<script type="text/javascript">
+  function register(){
+    var name2 = $("#name2").val();
+    var password2 = $("#password2").val();
+    var email = $("#email").val();
+    $.ajax({
+      type : "post",
+      url : "/register",
+      data : JSON.stringify({userName : name2, userPassword : password2}),
+      contentType : "application/json;charset=utf-8",
+      dataType : "json",
+      success : function(data){
+        if (data != null){
+          alert("注册成功！");
+          location.href="login.html";
+        }
+      }
+    });
+  }
+</script>
+
+
+
+//-------------------------------------------------------------------------------------------
+
+
 <script type="text/javascript">
   function topggleForm(){
     var container = document.querySelector('.container');
@@ -160,4 +119,3 @@
 </script>
 </body>
 </html>
-

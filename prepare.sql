@@ -95,7 +95,7 @@ values (1, 'Tom', '123456', '湖北武汉', '11111111111', '111111111@qq.com'),
        (19, 'Giftia', '000111', null, null, null),
        (20, 'Giftia02', '000111', null, null, null);
 
-insert into book (ISBW, book_name, type, publisher, price, author, publish_date, count, image, 'describe', sales)
+insert into book (ISBW, book_name, type, publisher, price, author, publish_date, count, image, `describe`, sales)
 values ('9787020104345', '悲惨世界-(全三册)', 1, '人民文学出版社', 110, '雨果', '1992-06-01', 50, null,
         '《悲惨世界(上中下)(精)》是雨果在流亡期间写的长篇小说，是他的代表作，也是世界文学宝库的珍品之一。 《悲惨世界(上中下)(精)》通过冉阿让等人的悲惨遭遇以及冉阿让被卞福汝主教感化后一系列令人感动的事迹，深刻揭露和批判了19世纪法国封建专制社会的腐朽本质及其罪恶现象，对穷苦人民在封建重压下所遭受的剥削欺诈和残酷迫害表示了悲悯和同情。',
         350),

@@ -31,8 +31,8 @@ public interface UserMapper {
     User getByUsernameAndPassword(User user);
 
     @Insert("insert into user (user_name, user_password)" +
-            "values (#{name}, #{password})")
-    void register(String name, String password);
+            "values (#{userName}, #{userPassword})")
+    void register(User user);
 
     @Select("select * from `order` where state = #{state}")
     List<Order> shoppingCart(Integer state);

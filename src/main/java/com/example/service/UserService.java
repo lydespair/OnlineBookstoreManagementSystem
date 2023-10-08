@@ -22,7 +22,7 @@ public interface UserService {
 
     User login(User user);
 
-    void register(String name, String password);
+    void register(User user);
 
     List<Order> shoppingCart(Integer state);
 }
