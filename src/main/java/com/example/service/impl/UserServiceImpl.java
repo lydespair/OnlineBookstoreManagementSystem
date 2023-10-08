@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import com.example.mapper.UserMapper;
+import com.example.pojo.Order;
 import com.example.utils.PageBean;
 import com.example.pojo.User;
 import com.example.service.UserService;
@@ -58,5 +59,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(String name, String password) {
         userMapper.register(name, password);
+    }
+
+    @Override
+    public List<Order> shoppingCart(Integer state) {
+        return userMapper.shoppingCart(state);
     }
 }

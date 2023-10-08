@@ -1,5 +1,6 @@
 package com.example.mapper;
 
+import com.example.pojo.Order;
 import com.example.pojo.User;
 import org.apache.ibatis.annotations.*;
 
@@ -32,4 +33,7 @@ public interface UserMapper {
     @Insert("insert into user (user_name, user_password)" +
             "values (#{name}, #{password})")
     void register(String name, String password);
+
+    @Select("select * from `order` where state = #{state}")
+    List<Order> shoppingCart(Integer state);
 }

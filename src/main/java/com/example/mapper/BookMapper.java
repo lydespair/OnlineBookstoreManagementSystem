@@ -11,8 +11,8 @@ public interface BookMapper {
 
     List<Book> list(Integer type, String name);
 
-    @Select("select * from book order by count desc")
-    List<Book> listBySale();
+    @Select("select * from book order by sales desc")
+    List<Book> listBySales();
 
     void delete(List<Integer> ids);
 }

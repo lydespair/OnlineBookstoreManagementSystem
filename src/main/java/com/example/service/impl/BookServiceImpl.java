@@ -42,7 +42,7 @@ public class BookServiceImpl implements BookService {
     public PageBean rank(Integer page, Integer pageSize) {
         PageHelper.startPage(page, pageSize);
 
-        List<Book> bookList = bookMapper.listBySale();
+        List<Book> bookList = bookMapper.listBySales();
         Page<Book> p = (Page<Book>) bookList;
 
         return new PageBean(p.getTotal(), p.getResult());

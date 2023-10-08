@@ -21,7 +21,8 @@ public class UserController {
 
     @GetMapping
     public Result list(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "5") Integer pageSize, String name) {
+                       @RequestParam(defaultValue = "5") Integer pageSize,
+                       @RequestParam(defaultValue = "") String name) {
         log.info("查询全部的用户数据");
 
         PageBean pageBean = userService.list(page, pageSize, name);
@@ -55,4 +56,6 @@ public class UserController {
         userService.update(user);
         return Result.success();
     }
+
+    //购物车
 }

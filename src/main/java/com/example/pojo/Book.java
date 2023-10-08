@@ -18,6 +18,6 @@ public class Book {
     private String author;
     private LocalDate publishDate;
     private int count;
-    private byte[] image;
+    private String image;
     private String describe;
 }
