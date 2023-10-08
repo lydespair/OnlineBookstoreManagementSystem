@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.pojo.Order;
 import com.example.utils.PageBean;
 import com.example.utils.Result;
 import com.example.pojo.User;
@@ -58,4 +59,15 @@ public class UserController {
     }
 
     //购物车
+    @GetMapping("/cart")
+    public Result cart(Integer state) {
+        List<Order> orderList = userService.cart(state);
+        return Result.success(orderList);
+    }
+
+    @PostMapping("/pay")
+    public Result pay(@RequestBody Order order) {
+        userService.pay(order);
+        return Result.success();
+    }
 }

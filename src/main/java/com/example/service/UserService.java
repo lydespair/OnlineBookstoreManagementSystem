@@ -24,5 +24,7 @@ public interface UserService {
 
     void register(String name, String password);
 
-    List<Order> shoppingCart(Integer state);
+    List<Order> cart(Integer state);
+
+    void pay(Order order);
 }
