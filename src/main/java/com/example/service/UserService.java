@@ -24,5 +24,9 @@ public interface UserService {
 
     void register(User user);
 
-    List<Order> shoppingCart(Integer state);
+    List<Order> cart(Integer state);
+
+    void pay(Order order);
+
+    void addCart(Order order);
 }

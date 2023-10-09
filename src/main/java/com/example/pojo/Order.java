@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Order {
     private Integer orderId;
-    private Integer bookId;
+    private String bookId;
     private Integer userId;
     private int count;
     private float price;
-    private short userCheck;
-    private LocalDateTime postTime;
-    private short adminCheck;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
+    private short state;
 }
