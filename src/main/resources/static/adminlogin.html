@@ -6,8 +6,7 @@
   <title>登录</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/mihuyo.ico">
-  <script src="jquery-3.6.0.min.js"></script>
-  <script src="login.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
 <section>
@@ -20,14 +19,43 @@
       <div class="formBx">
         <form action="">
           <h2>管理员登录</h2>
-          <input type="text" name="" placeholder="用户名" onblur="checkname();"/>
-          <input type="password" name="" placeholder="密码" onblur="checkpass();"/>
-          <input type="submit" name="" value="登录" onclick="checkall();"/>
+          <input type="text" name="" id="name" placeholder="用户名" />
+          <input type="password" name="" id="password" placeholder="密码" />
+          <input type="submit" name="" value="登录" onclick="login();"/>
           <p class="signup"><a href="login.html" onclick="topggleForm();">普通用户登录</a></p>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+//----------------------------------------------------------
+<!-- 登录方法 -->
+<script>
+  function login() {
+    // 获取用户名和密码
+    let name = $("#name").val();
+    let password = $("#password").val();
+    $.ajax({
+      url : "这里是管理员接口",
+      type : "post",
+      // data表示发送的数据
+      data : JSON.stringify({
+        userName : name,
+        userPassword : password
+      }),
+      // 定义发送请求的数据格式为JSON字符串
+      contentType : "application/json;charset=UTF-8",
+      //定义回调响应的数据格式为JSON字符串,该属性可以省略
+      dataType : "json",
+      //成功响应的结果
+      success : function(data) {
+        if (data != null) {
+          location.href = "这里是管理员界面";
+        }
+      }
+    });
+  }
+</script>
 </body>
 </html>
