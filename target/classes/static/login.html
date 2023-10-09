@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/mihuyo.ico">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="register.js"></script>
+
+</head>
+<body>
+<section>
+
+  <!-- 登录 -->
+
+  <div class="container">
+    <div class="user singinBx">
+      <div class="imgBx"><img src="img/1.jpg" alt=""></div>
+      <div class="formBx">
+        <form action="">
+          <h2>登录</h2>
+          <input type="text" name="" id="name" placeholder="用户名" />
+          <input type="password" name="" id="password" placeholder="密码" />
+          <input type="submit" name="" value="登录" onclick="login()"/>
+          <p class="signup"><a href="adminlogin.html" onclick="topggleForm();">管理员登录</a></p>
+          <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- 注册 -->
+
+    <div class="user singupBx">
+      <div class="formBx">
+        <form action="">
+          <h2>注册</h2>
+          <input type="text" name="" id="name2" placeholder="用户名"/>
+          <input type="email" name="" id="email" placeholder="邮箱地址"/>
+          <input type="password" name="" id="password2" placeholder="密码"/>
+          <input type="password" name="" placeholder="再次输入密码"/>
+          <input type="submit" name="" value="注册" onclick="register()" />
+          <p class="signup">已有账号？<a href="#" onclick="topggleForm();">登录</a></p>
+        </form>
+      </div>
+      <div class="imgBx"><img src="img/2.jpg" alt=""></div>
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+//-------------------------------------------------------------------------------------------
+<!-- 登录方法 -->
+<script>
+  function login() {
+    // 获取用户名和密码
+    let name = $("#name").val();
+    let password = $("#password").val();
+    $.ajax({
+      url : "/login",
+      type : "post",
+      // data表示发送的数据
+      data : JSON.stringify({
+        userName : name,
+        userPassword : password
+      }),
+      // 定义发送请求的数据格式为JSON字符串
+      contentType : "application/json;charset=UTF-8",
+      //定义回调响应的数据格式为JSON字符串,该属性可以省略
+      dataType : "json",
+      //成功响应的结果
+      success : function(data) {
+        if (data != null) {
+          location.href = "index.html";
+        }
+      }
+    });
+  }
+</script>
+
+<!-- 注册方法 -->
+
+<script type="text/javascript">
+  function register(){
+    var name2 = $("#name2").val();
+    var password2 = $("#password2").val();
+    var email = $("#email").val();
+    $.ajax({
+      type : "post",
+      url : "/register",
+      data : JSON.stringify({userName : name2, userPassword : password2}),
+      contentType : "application/json;charset=utf-8",
+      dataType : "json",
+      success : function(data){
+        if (data != null){
+          alert("注册成功！");
+          location.href="login.html";
+        }
+      }
+    });
+  }
+</script>
+
+
+
+//-------------------------------------------------------------------------------------------
+
+
+<script type="text/javascript">
+  function topggleForm(){
+    var container = document.querySelector('.container');
+    container.classList.toggle('active');
+  }
+</script>
+</body>
+</html>
