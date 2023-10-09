@@ -22,4 +22,6 @@ public interface OrderMapper {
             "(user_id, book_id, count, price, create_time, update_time, state) " +
             "values (#{userId}, #{bookId}, #{count}, #{price}, #{createTime}, #{updateTime}, #{state})")
     void addCart(Order order);
+
+    List<Order> selectOrder(Order order);
 }
