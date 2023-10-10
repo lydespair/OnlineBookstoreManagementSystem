@@ -102,9 +102,13 @@
       contentType : "application/json;charset=utf-8",
       dataType : "json",
       success : function(data){
-        if (data != null){
+        if (data.code != 0){
           alert("注册成功！");
           location.href="login.html";
+        }
+        else {
+          console.log(data);
+          alert("用户名不合法或用户名重复")
         }
       }
     });
