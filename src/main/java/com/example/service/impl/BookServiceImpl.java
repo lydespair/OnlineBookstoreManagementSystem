@@ -57,4 +57,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> recommend() {
         return bookMapper.recommend();
     }
+
+    @Override
+    public void update(Book book) {
+        bookMapper.update(book);
+    }
 }

@@ -14,4 +14,6 @@ public interface BookService {
     void delete(List<Integer> ids);
 
     List<Book> recommend();
+
+    void update(Book book);
 }
