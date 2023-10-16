@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.pojo.Book;
 import com.example.utils.PageBean;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface BookService {
     PageBean rank(Integer page, Integer pageSize);
 
     void delete(List<Integer> ids);
+
+    List<Book> recommend();
 }

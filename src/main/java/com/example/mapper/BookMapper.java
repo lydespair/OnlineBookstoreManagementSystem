@@ -15,4 +15,7 @@ public interface BookMapper {
     List<Book> listBySales();
 
     void delete(List<Integer> ids);
+
+    @Select("select * from book order by sales desc limit 5")
+    List<Book> recommend();
 }

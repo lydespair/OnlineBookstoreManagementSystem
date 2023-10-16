@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import com.example.pojo.Book;
 import com.example.pojo.Order;
+import com.example.service.BookService;
 import com.example.utils.JwtUtils;
 import com.example.utils.PageBean;
 import com.example.utils.Result;
@@ -23,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BookService bookService;
 
     @GetMapping
     public Result list(@RequestParam(defaultValue = "1") Integer page,
@@ -109,5 +114,12 @@ public class UserController {
             return Result.error("非法输入");
         userService.register(user);
         return Result.success();
+    }
+
+    @GetMapping("/recommend")
+//    图书推荐功能
+    public Result recommend() {
+        List<Book> bookList = bookService.recommend();
+        return Result.success(bookList);
     }
 }
