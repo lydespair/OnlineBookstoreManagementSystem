@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.pojo.Order;
+import com.example.utils.JwtUtils;
 import com.example.utils.PageBean;
 import com.example.utils.Result;
 import com.example.pojo.User;
@@ -9,7 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 
 @Slf4j
@@ -78,6 +82,32 @@ public class UserController {
     @PostMapping("/pay")
     public Result pay(@RequestBody Order order) {
         userService.pay(order);
+        return Result.success();
+    }
+
+    @PostMapping("/login")
+    public Result login(@RequestBody User user) {
+        log.info("用户登录: {}", user);
+        User u = userService.login(user);
+        if (u != null) {
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", u.getUserId());
+            claims.put("name", u.getUserName());
+            claims.put("username", u.getUserName());
+            String jwt = JwtUtils.generateJwt(claims);
+            return Result.success(jwt);
+        }
+        return Result.error("用户名或密码错误");
+    }
+
+    @PostMapping("/register")
+    public Result Register(@RequestBody User user) {
+        log.info("用户注册");
+        if (userService.getByName(user.getUserName()) != null) return Result.error("用户名重复");
+        if (Objects.equals(user.getUserName(), "") || user.getUserName() == null
+                || Objects.equals(user.getUserPassword(), "") || user.getUserPassword() == null)
+            return Result.error("非法输入");
+        userService.register(user);
         return Result.success();
     }
 }
