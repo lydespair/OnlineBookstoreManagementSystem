@@ -62,4 +62,9 @@ public class BookServiceImpl implements BookService {
     public void update(Book book) {
         bookMapper.update(book);
     }
+
+    @Override
+    public Book getByISBW(String ISBW) {
+        return bookMapper.getByISBW(ISBW);
+    }
 }

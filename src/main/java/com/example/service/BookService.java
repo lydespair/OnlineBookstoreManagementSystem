@@ -16,4 +16,6 @@ public interface BookService {
     List<Book> recommend();
 
     void update(Book book);
+
+    Book getByISBW(String ISBW);
 }

@@ -25,4 +25,7 @@ public interface BookMapper {
             " price = #{price}, author = #{author}, publish_date = #{publishDate}, " +
             "count = #{count}, image = #{image}, `describe` = #{describe} where ISBW = #{ISBW}")
     void update(Book book);
+
+    @Select("select * from book where ISBW = #{ISBW}")
+    Book getByISBW(String ISBW);
 }
