@@ -52,4 +52,14 @@ public class BookServiceImpl implements BookService {
     public void delete(List<Integer> ids) {
         bookMapper.delete(ids);
     }
+
+    @Override
+    public List<Book> recommend() {
+        return bookMapper.recommend();
+    }
+
+    @Override
+    public void update(Book book) {
+        bookMapper.update(book);
+    }
 }

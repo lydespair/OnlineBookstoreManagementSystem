@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Manager {
+public class Admin {
     private Integer adminId;
     private String adminName;
     private String adminPwd;

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.pojo.Book;
 import com.example.utils.PageBean;
 import com.example.utils.Result;
 import com.example.service.BookService;
@@ -35,6 +36,13 @@ public class BookController {
     public Result delete(@PathVariable List<Integer> ids) {
 
         bookService.delete(ids);
+        return Result.success();
+    }
+
+    @PutMapping
+    public Result update(@RequestBody Book book) {
+        log.info("修改图书信息");
+        bookService.update(book);
         return Result.success();
     }
 }
