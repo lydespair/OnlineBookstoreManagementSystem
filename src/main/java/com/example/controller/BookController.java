@@ -39,6 +39,13 @@ public class BookController {
         return Result.success();
     }
 
+
+    @GetMapping("/{ISBN}")
+    public Result getByISBN(@PathVariable String ISBN) {
+        log.info("根据ISBN查找图书:{}", ISBN);
+        Book book = bookService.getByISBN(ISBN);
+        return Result.success(book);
+    }
     @PutMapping
     public Result update(@RequestBody Book book) {
         log.info("修改图书信息");

@@ -3,7 +3,7 @@ use bookseller;
 
 create table if not exists book
 (
-    ISBW         varchar(50)   not null comment '书号'
+    ISBN         varchar(50)   not null comment '书号'
         primary key,
     book_name    varchar(20)   not null comment '图书名字',
     type         tinyint       not null comment '图书分类 1-文学小说 2-社科经管 3-幼儿童书 4-生活艺术 5-行业职业 ',
@@ -16,12 +16,13 @@ create table if not exists book
     `describe`   varchar(1000) null comment '简介',
     sales        int default 0 not null comment '销量',
     constraint book_pk1
-        unique (ISBW)
+        unique (ISBN)
 )
     comment '图书信息表';
 
 
-create table if not exists manager
+
+create table if not exists admin
 (
     admin_id   bigint auto_increment comment '管理员id'
         primary key,
@@ -65,11 +66,12 @@ create table if not exists user
 (
     user_id       bigint auto_increment comment '用户名'
         primary key,
-    user_name     varchar(10) not null comment '用户姓名',
-    user_password varchar(20) not null comment '密码',
-    address       varchar(50) null comment '地址',
-    tel           char(11)    null comment '联系号码',
-    email         varchar(20) null comment '邮箱',
+    user_name     varchar(10)  not null comment '用户姓名',
+    user_password varchar(20)  not null comment '密码',
+    address       varchar(50)  null comment '地址',
+    tel           char(11)     null comment '联系号码',
+    email         varchar(20)  null comment '邮箱',
+    image         varchar(100) null comment '头像',
     constraint user_pk
         unique (tel),
     constraint user_pk1
@@ -95,7 +97,7 @@ values (1, 'Tom', '123456', '湖北武汉', '11111111111', '111111111@qq.com'),
        (19, 'Giftia', '000111', null, null, null),
        (20, 'Giftia02', '000111', null, null, null);
 
-insert into book (ISBW, book_name, type, publisher, price, author, publish_date, count, image, `describe`, sales)
+insert into book (ISBN, book_name, type, publisher, price, author, publish_date, count, image, `describe`, sales)
 values ('9787020104345', '悲惨世界-(全三册)', 1, '人民文学出版社', 110, '雨果', '1992-06-01', 50, null,
         '《悲惨世界(上中下)(精)》是雨果在流亡期间写的长篇小说，是他的代表作，也是世界文学宝库的珍品之一。 《悲惨世界(上中下)(精)》通过冉阿让等人的悲惨遭遇以及冉阿让被卞福汝主教感化后一系列令人感动的事迹，深刻揭露和批判了19世纪法国封建专制社会的腐朽本质及其罪恶现象，对穷苦人民在封建重压下所遭受的剥削欺诈和残酷迫害表示了悲悯和同情。',
         350),
@@ -114,3 +116,6 @@ values ('9787020104345', '悲惨世界-(全三册)', 1, '人民文学出版社',
        ('9787544291170', '百年孤独', 1, '南海出版公司', 55, '[哥伦比亚]加西亚·马尔克斯', '2017-08-01', 30, null, '《百年孤独》是魔幻现实主义文学的代表作，描写了布恩迪亚家族七代人的传奇故事，以及加勒比海沿岸小镇马孔多的百年兴衰，反映了拉丁美洲一个世纪以来风云变幻的历史。作品融入神话传说、民间故事、宗教典故等因素，巧妙地糅合了现实与虚幻，展现出一个瑰丽的想象世界，成为20世纪重要的经典文学巨著。1982年加西亚·马尔克斯获得诺贝尔文学奖，奠定*文学大师的地位，很大程度上便是凭借《百年孤独》的巨大影响。
 
 ', 71);
+
+insert into admin (admin_id, admin_name, admin_pwd)
+values  (123, 'cvcv', '000');

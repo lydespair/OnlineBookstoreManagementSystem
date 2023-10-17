@@ -15,8 +15,8 @@ public interface UserMapper {
 
     void deleteById(List<Integer> ids);
 
-    @Insert("insert into user (user_name, user_password, address, tel, email) " +
-            "values (#{userName}, #{userPassword}, #{address}, #{tel}, #{email})")
+    @Insert("insert into user (user_name, user_password, address, tel, email, image) " +
+            "values (#{userName}, #{userPassword}, #{address}, #{tel}, #{email}, #{image})")
     void insert(User user);
 
     @Select("select * from user where user_name = #{name}")
@@ -24,7 +24,7 @@ public interface UserMapper {
 
     @Update("update user " +
             "set user_name = #{userName}, user_password = #{userPassword}, user.address = #{address}, " +
-            "user.tel = #{tel}, user.email = #{email} where user_id = #{userId}")
+            "user.tel = #{tel}, user.email = #{email}, image = #{image} where user_id = #{userId}")
     void update(User user);
 
     @Select("select * from user where user_name = #{userName} and user_password = #{userPassword}")
