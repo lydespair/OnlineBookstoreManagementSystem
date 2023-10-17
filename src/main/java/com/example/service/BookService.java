@@ -17,5 +17,5 @@ public interface BookService {
 
     void update(Book book);
 
-    Book getByISBW(String ISBW);
+    Book getByISBN(String ISBN);
 }

@@ -40,10 +40,10 @@ public class BookController {
     }
 
 
-    @GetMapping("/{ISBW}")
-    public Result getByISBW(@PathVariable String ISBW) {
-        log.info("根据ISBW查找图书:{}", ISBW);
-        Book book = bookService.getByISBW(ISBW);
+    @GetMapping("/{ISBN}")
+    public Result getByISBN(@PathVariable String ISBN) {
+        log.info("根据ISBN查找图书:{}", ISBN);
+        Book book = bookService.getByISBN(ISBN);
         return Result.success(book);
     }
     @PutMapping

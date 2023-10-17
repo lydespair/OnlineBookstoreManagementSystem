@@ -64,7 +64,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getByISBW(String ISBW) {
-        return bookMapper.getByISBW(ISBW);
+    public Book getByISBN(String ISBN) {
+        return bookMapper.getByISBN(ISBN);
     }
 }
