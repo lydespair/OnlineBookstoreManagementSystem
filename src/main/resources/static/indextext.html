@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网上书店系统</title>
+    <link rel="shortcut icon" href="img/mihuyo.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+<script src="//unpkg.com/vue@2/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+<div id="app">
+    <el-header style="text-align: right; font-size: 12px">
+        <el-dropdown>
+            <i class="el-icon-more-outline" style="margin-right: 15px"></i>
+            <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item><i class="el-icon-user-solid"></i><a href="adminlogin.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">个人中心</a></el-dropdown-item>
+                <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="adminlogin.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的购物车</a></el-dropdown-item>
+                <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="adminlogin.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的订单</a></el-dropdown-item>
+                <el-dropdown-item><i class="el-icon-switch-button"></i><a href="login.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">退出登录</a></el-dropdown-item>
+            </el-dropdown-menu>
+        </el-dropdown>
+        <span>USER</span>
+        <el-avatar icon="el-icon-user-solid" shape="square" :size="45"></el-avatar>
+    </el-header>
+    <el-main>
+        <div class="line"></div>
+        <div style="text-align: center">
+            <h2>
+                <i class="el-icon-medal-1"></i>
+                推荐图书
+            </h2>
+        </div>
+        <template>
+            <div class="index">
+                <el-carousel :interval="4000" type="card" height="200px">
+                    <el-carousel-item v-for="item in 6" :key="item.id">
+                        <img style="object-fit: scale-down; width:100%; height:100%;" :src="item.idView" class="image">
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+        </template>
+
+        <div style="text-align: center">
+            <h2>
+                <i class="el-icon-collection"></i>
+                搜索图书
+            </h2>
+        </div>
+
+        <div style="text-align: center">
+            <el-col :span="6" >
+                <el-input
+                        :span="4"
+                        placeholder="请输入内容"
+                        prefix-icon="el-icon-search"
+                        v-model="input">
+                </el-input>
+                <script>
+                    export default {
+                        data() {
+                            return {
+                                input: ''
+                            }
+                        }
+                    }
+                </script>
+            </el-col>
+
+
+        </div>
+
+        <div class="wrap">
+            <div class="card_wrap">
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+
+                <div class="card_item">
+                    <div class="card_content"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </el-main>
+</div>
+
+
+<style>
+    @import url("//unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css");
+
+    .el-header {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .el-aside {
+        color: #333;
+    }
+
+    .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .el-carousel__item h3 {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 200px;
+        margin: 0;
+    }
+
+    .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+    }
+
+    .el-carousel__item:nth-child(2n+1) {
+        background-color: #d3dce6;
+    }
+    /*卡片内容*/
+    .wrap { // 这个只是让整体在页面居中展示
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        padding: 8px;
+    }
+
+    .card_wrap { // 卡片容器
+        display: flex;
+        flex-wrap: wrap;
+        width: 60%;
+    }
+
+    .card_item { // 每个卡片
+        flex-basis: 25%;
+        margin-bottom: 16px;
+        padding: 0px 8px;
+        box-sizing: border-box;
+    }
+
+    .card_content { // 卡片内容
+        background-color: #2F4056;
+        border-radius: 2px;
+        height: 80px;
+        width: 100%;
+    }
+</style>
+
+<script>
+    /* 用户头像js */
+    new Vue().$mount('#app')
+    /*搜索框*/
+
+    /*其他页面跳转*/
+    function topggleForm(){
+        var container = document.querySelector('.container');
+        container.classList.toggle('active');
+    }
+
+</script>
+
+</body>
+</html>

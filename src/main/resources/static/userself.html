@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网上书店系统/我的主页</title>
+    <link rel="shortcut icon" href="img/mihuyo.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+<script src="//unpkg.com/vue@2/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+<div id="app">
+    <el-header style="text-align: right; font-size: 12px">
+        <el-dropdown>
+            <i class="el-icon-more-outline" style="margin-right: 15px"></i>
+            <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item><i class="el-icon-user-solid"></i><a href="userself.html" onclick="topggleForm();"
+                                                                       style="text-decoration: none;color:#808080">个人中心</a>
+                </el-dropdown-item>
+                <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="shoppingcart.html"
+                                                                            onclick="topggleForm();"
+                                                                            style="text-decoration: none;color:#808080">我的购物车</a>
+                </el-dropdown-item>
+                <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="myorder.html" onclick="topggleForm();"
+                                                                           style="text-decoration: none;color:#808080">我的订单</a>
+                </el-dropdown-item>
+                <el-dropdown-item><i class="el-icon-switch-button"></i><a href="login.html" onclick="topggleForm();"
+                                                                          style="text-decoration: none;color:#808080">退出登录</a>
+                </el-dropdown-item>
+            </el-dropdown-menu>
+        </el-dropdown>
+        <span>USER</span>
+        <el-avatar icon="el-icon-user-solid" shape="square" :size="45"></el-avatar>
+    </el-header>
+    <el-main>
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/' }"><a href="indextext.html" style="text-decoration: none;">首页</a></el-breadcrumb-item>
+            <el-breadcrumb-item><i class="el-icon-user-solid"></i>个人中心</el-breadcrumb-item>
+        </el-breadcrumb>
+        <el-container>
+            <el-aside>
+                <h1>我的头像</h1>
+                <div class="block">
+                    <el-avatar shape="square" :size="250" :src="squareUrl"></el-avatar>
+                    <script>
+                        export default {
+                            data() {
+                                return {
+                                    squareUrl: "https://c-ssl.duitang.com/uploads/blog/202211/22/20221122180211_45ec1.jpeg",
+                                    sizeList: ["large", "medium", "small"]
+                                }
+                            }
+                        }
+                    </script>
+                    <h2>用户名</h2>
+                    <h5>xxxxx@qq.com</h5>
+                    <el-divider><i class="el-icon-date"></i></el-divider>
+                    <el-calendar v-model="value">
+                    </el-calendar>
+                    <script>
+                        export default {
+                            data() {
+                                return {
+                                    value: new Date()
+                                }
+                            }
+                        }
+                    </script>
+
+                </div>
+            </el-aside>
+            <el-main>
+                <el-divider content-position="right"><i class="el-icon-tickets"></i></el-divider>
+                <h3> 我的信息</h3>
+                <template>
+                    <el-descriptions class="margin-top" title="" :column="3" :size="size" border>
+                        <template slot="extra">
+                            <el-button type="primary" size="small">修改</el-button>
+                        </template>
+                        <el-descriptions-item>
+                            <template slot="label">
+                                <i class="el-icon-user"></i>
+                                用户名
+                            </template>
+                            kooriookami
+                        </el-descriptions-item>
+                        <el-descriptions-item>
+                            <template slot="label">
+                                <i class="el-icon-mobile-phone"></i>
+                                手机号
+                            </template>
+                            18100000000
+                        </el-descriptions-item>
+                        <el-descriptions-item>
+                            <template slot="label">
+                                <i class="el-icon-location-outline"></i>
+                                居住地
+                            </template>
+                            苏州市
+                        </el-descriptions-item>
+                        <el-descriptions-item>
+                            <template slot="label">
+                                <i class="el-icon-tickets"></i>
+                                备注
+                            </template>
+                            <el-tag size="small">学校</el-tag>
+                        </el-descriptions-item>
+                        <el-descriptions-item>
+                            <template slot="label">
+                                <i class="el-icon-office-building"></i>
+                                联系地址
+                            </template>
+                            江苏省苏州市吴中区吴中大道 1188 号
+                        </el-descriptions-item>
+                    </el-descriptions>
+                </template>
+                <script>
+                    export default {
+                        data () {
+                            return {
+                                size: ''
+                            };
+                        }
+                    }
+                </script>
+                <br>
+                <el-divider content-position="right"><i class="el-icon-edit"></i></el-divider>
+                <h3>我的留言</h3>
+                <div style="margin: 20px 0;"></div>
+                <el-input
+                        type="textarea"
+                        placeholder="请输入内容"
+                        v-model="textarea"
+                        maxlength="30"
+                        show-word-limit
+                >
+                </el-input>
+                <script>
+                    export default {
+                        data() {
+                            return {
+                                textarea: ''
+                            }
+                        }
+                    }
+                </script>
+
+            </el-main>
+
+        </el-container>
+
+    </el-main>
+</div>
+
+
+<style>
+    @import url("//unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css");
+
+    .el-header {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .el-aside {
+        color: #333;
+    }
+
+    .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+</style>
+
+<script>
+    /* 用户头像js */
+    new Vue().$mount('#app')
+    /*搜索框*/
+
+    /*其他页面跳转*/
+    function topggleForm() {
+        var container = document.querySelector('.container');
+        container.classList.toggle('active');
+    }
+
+</script>
+
+</body>
+</html>
