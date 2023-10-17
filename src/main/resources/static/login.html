@@ -62,7 +62,7 @@
     let name = $("#name").val();
     let password = $("#password").val();
     $.ajax({
-      url : "/users/login",
+      url : "http://localhost:8080/users/login",
       type : "post",
       // data表示发送的数据
       data : JSON.stringify({
@@ -99,7 +99,7 @@
     var email = $("#email").val();
     $.ajax({
       type : "post",
-      url : "/register",
+      url : "/users/register",
       data : JSON.stringify({userName : name2, userPassword : password2}),
       contentType : "application/json;charset=utf-8",
       dataType : "json",

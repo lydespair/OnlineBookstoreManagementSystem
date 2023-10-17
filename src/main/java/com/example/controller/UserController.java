@@ -93,7 +93,9 @@ public class UserController {
     @PostMapping("/login")
     public Result login(@RequestBody User user) {
         log.info("用户登录: {}", user);
+        System.out.println(user.getUserPassword().getClass().toString());
         User u = userService.login(user);
+        System.out.println("asd");
         if (u != null) {
             Map<String, Object> claims = new HashMap<>();
             claims.put("id", u.getUserId());
@@ -107,7 +109,7 @@ public class UserController {
 
     @PostMapping("/register")
     public Result Register(@RequestBody User user) {
-        log.info("用户注册");
+        log.info("用户注册 USER: {}", user);
         if (userService.getByName(user.getUserName()) != null) return Result.error("用户名重复");
         if (Objects.equals(user.getUserName(), "") || user.getUserName() == null
                 || Objects.equals(user.getUserPassword(), "") || user.getUserPassword() == null)
