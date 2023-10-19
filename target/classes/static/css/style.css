@@ -99,7 +99,7 @@ section .container .user .formBx form input{
 
 /* 为登录设置样式 */
 
-section .container .user .formBx form input[type="submit"]{
+section .container .user .formBx form input[type="button"]{
     max-width: 100px;
     background: #FFDAB9;
     color:#fff;

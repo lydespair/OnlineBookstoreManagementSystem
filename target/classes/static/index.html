@@ -369,30 +369,30 @@
         }
 
 
-        .el-header {
+        el-header {
             background-color: #363D40;
-            /*给头部设置一下弹性布局*/
+            /*/ / 给头部设置一下弹性布局 */
             display: flex;
-            /*让它贴标左右对齐*/
+            /*/ / 让它贴标左右对齐 */
             justify-content: space-between;
-            /*清空图片左侧padding*/
+            /*/ / 清空图片左侧padding*/
             padding-left: 0;
-            /*按钮居中*/
+            /*/ / 按钮居中 */
             align-items: center;
-            /*文本颜色*/
+            /*/ / 文本颜色 */
             color: #fff;
-            /*设置文本字体大小*/
+            /*/ / 设置文本字体大小 */
             font-size: 20px;
-            /*嵌套*/
         }
-        .el-header > div {
-            /*弹性布局*/
+        /*嵌套*/
+        el-header > div {
+            /*/ / 弹性布局 */
             display: flex;
-            /*纵向上居中对齐*/
+            /*/ / 纵向上居中对齐 */
             align-items: center;
-            /*给文本和图片添加间距，使用类选择器*/
         }
-        .el-header > div span {
+        /*给文本和图片添加间距，使用类选择器*/
+        el-header > div span {
             margin-left: 15px;
         }
 
@@ -635,9 +635,8 @@
 <script src="//unpkg.com/vue@2/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
 <div id="app">
-    <el-header style="font-size: 12px">
-        <el-row type="flex" justify="space-around" style="align-items: center; text-align: right">
-            <el-col :span="16"></el-col>
+    <el-header style="font-size: 12px; justify-content: flex-end">
+        <el-row type="flex" style="justify-content: flex-end; align-items: center">
             <el-col :span="2">
                 <el-dropdown>
                     <i class="el-icon-more-outline" style="margin-right: 15px"></i>
