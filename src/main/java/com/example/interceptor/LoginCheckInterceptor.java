@@ -25,6 +25,9 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
             return true;
         }
 
+//        if (url.contains("html") || url.contains("css") || url.contains("js")) {
+//            return true;
+//        }
         String jwt = request.getHeader("token");
 
         if (!StringUtils.hasLength(jwt)) {

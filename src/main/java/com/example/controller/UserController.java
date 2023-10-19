@@ -93,9 +93,7 @@ public class UserController {
     @PostMapping("/login")
     public Result login(@RequestBody User user) {
         log.info("用户登录: {}", user);
-        System.out.println(user.getUserPassword().getClass().toString());
         User u = userService.login(user);
-        System.out.println("asd");
         if (u != null) {
             Map<String, Object> claims = new HashMap<>();
             claims.put("id", u.getUserId());
