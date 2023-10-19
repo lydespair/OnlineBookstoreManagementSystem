@@ -10,7 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"
           integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="d1">
 <script src="//unpkg.com/vue@2/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
 <div id="app">
@@ -39,7 +39,70 @@
       <el-breadcrumb-item><i class="el-icon-shopping-bag-2"></i>我的订单</el-breadcrumb-item>
     </el-breadcrumb>
   </el-main>
+
+<div id="order">
+  <h2>1.收货信息</h2>
+  <hr >
+  <div id="shou">
+    <table id="c3">
+      <tr>
+        <td>收货人姓名：</td>
+        <td><input type="text" /></td>
+        <td><span>*收货人姓名</span></td>
+      </tr>
+      <tr>
+        <td>收货地址：</td>
+        <td><select id="province" onchange="myChange()"></select>
+          <select id="cities"></select></td>
+        <td><span>*收货人详细地址</span></td>
+      </tr>
+      <tr>
+        <td>邮政编码：</td>
+        <td><input type="text" /></td>
+        <td><span> *所在地区的邮政编码，非必填</span></td>
+      </tr>
+      <tr>
+        <td>手机号码：</td>
+        <td><input type="text" /></td>
+        <td><span>*收货人的手机号码</span></td>
+      </tr>
+      <tr>
+        <td>商品备注：</td>
+        <td><input type="text" /></td>
+        <td><span>*选填</span></td>
+      </tr>
+    </table>
+  </div>
+  <h2>2.支付方式</h2>
+  <hr >
+  <div id="zhi">
+    <table id="a1">
+      <tr>
+        <td><input type="radio" name="s1" />货到付款  <span>手续费：0.00  </span></td>
+        <td><input type="radio" name="s1" />余额支付  <span>手续费：0.00  </span></td>
+        <td><input type="radio" name="s1" />支付宝  <span>手续费：0.00  </span></td>
+        <td><input type="radio" name="s1" />微信  <span>手续费：0.00  </span></td>
+      </tr>
+    </table>
+  </div>
+  <h2>3.配送方式</h2>
+  <hr >
+  <div id="pei">
+    <table id="a2">
+      <tr>
+        <td><input type="radio" name="s2" />顺丰快递</td>
+        <td><input type="radio"  name="s2" />韵达快递</td>
+      </tr>
+    </table>
+  </div>
+  <h2>4.确认提交</h2>
+  <hr >
+  <div id="que">
+    <button type="button" onclick="buy()">确认提交</button>
+  </div>
 </div>
+</div>
+
 
 
 <style>
@@ -60,9 +123,48 @@
     color: #333;
     line-height: 60px;
   }
+
+
+  .order #shou{
+    height: 200px;
+    width: 490px;
+    margin-left: 100px;
+    text-align: left;
+    margin-top: 40px;
+  }
+  .order #pei{
+    margin-left: 100px;
+    text-align: left;
+    margin-top: 40px;
+  }
+  .order #zhi{
+    margin-left: 100px;
+    text-align: left;
+    margin-top: 40px;
+  }
+  .order #que{
+    margin-left: 1200px;
+  }
+  body{
+    background:url("img/blackbackground.jpg");
+    background-size:cover;
+  }
+  .order span{
+    font-size: 1px;
+    font-family: "楷体";
+  }
+  .order #a1{
+    width: 800px;
+  }
+  .order #a2{
+    width: 300px;
+  }
+  .order #c3{
+    line-height: 30px;
+  }
 </style>
 
-<script>
+<script type="text/javascript">
   /* 用户头像js */
   new Vue().$mount('#app')
   /*搜索框*/
@@ -71,6 +173,47 @@
   function topggleForm(){
     var container = document.querySelector('.container');
     container.classList.toggle('active');
+  }
+
+
+    //数组怎么写?
+    //类型不限制
+    //长度不限制
+    //数组可以是字符串
+    var provinces=[]
+    //城市
+    provinces["广东省"]=["广州","深圳","珠海"]
+    provinces["湖南省"]=["长沙","怀化","永州"]
+    provinces["湖北省"]=["武汉","黄冈"]
+
+
+    //省份怎么来
+    //  for of 相当于foreach 遍历元素
+    //  for in 遍历下标
+    for(let i in provinces){
+    //往省份的下拉框中添加选项
+    //<option value="i">i</option>
+    province.appendChild(new Option(i,i))
+  }
+
+    //城市里面放谁?
+    function setCity(name) {
+    for(let i of provinces[name]){
+    cities.appendChild(new Option(i,i))
+  }
+  }
+
+    setCity(province.value)
+
+    function myChange() {
+    //清空原来的选项
+    cities.innerHTML=""
+    //输入框 和 下拉框
+    setCity(province.value)
+  }
+    //提交订单
+  function buy() {
+    alert("商品已成功下单");
   }
 
 </script>

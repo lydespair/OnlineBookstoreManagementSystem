@@ -11,6 +11,7 @@
     <script src="register.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
 </head>
 <body>
 <section>
@@ -23,7 +24,7 @@
                     <h2>登录</h2>
                     <input v-model="user.name" type="text" name="" id="name" placeholder="用户名"/>
                     <input v-model="user.password" type="password" name="" id="password" placeholder="密码"/>
-                    <button type="button" @click="login">登录</button>
+                    <input type="button" value="登录" @click="login">
                     <p class="signup"><a href="adminlogin.html" onclick="topggleForm();">管理员登录</a></p>
                     <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
                 </form>
