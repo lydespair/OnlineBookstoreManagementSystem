@@ -99,16 +99,19 @@ section .container .user .formBx form input{
 
 /* 为登录设置样式 */
 
-section .container .user .formBx form input[type="submit"]{
+section .container .user .formBx form input[type="button"]{
     max-width: 100px;
-    background: #FFDAB9;
+    background:#FFDAB9;
     color:#fff;
     cursor:pointer;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     transition: .5s;
+    border-radius: 5px;
+    border-color: #FFDAB6;
 }
+
 
 /* 没有账号时 */
 
