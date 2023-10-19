@@ -77,9 +77,9 @@
       success : function(data) {
         console.log(data);
         if (data.code != 0) {
-          // document.cookie="userData=data.data";
-          // console.log(document.cookie);
-          location.href = "indextext.html";
+          document.cookie="userData=data.data";
+          console.log(document.cookie);
+          location.href = "index.html";
         }
         else{
           alert("用户名或密码错误")

@@ -14,22 +14,28 @@
 <script src="//unpkg.com/vue@2/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
 <div id="app">
-  <el-header style="text-align: right; font-size: 12px">
-    <el-dropdown>
-      <i class="el-icon-more-outline" style="margin-right: 15px"></i>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item><i class="el-icon-user-solid"></i><a href="userself.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">个人中心</a></el-dropdown-item>
-        <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="shoppingcart.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的购物车</a></el-dropdown-item>
-        <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="myorder.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的订单</a></el-dropdown-item>
-        <el-dropdown-item><i class="el-icon-switch-button"></i><a href="login.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">退出登录</a></el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-    <span>USER</span>
-    <el-avatar icon="el-icon-user-solid" shape="square" :size="45"></el-avatar>
+  <el-header style="font-size: 12px">
+    <el-row type="flex" justify="space-around" style="align-items: center; text-align: right">
+      <el-col :span="16"></el-col>
+      <el-col :span="2">
+        <el-dropdown>
+          <i class="el-icon-more-outline" style="margin-right: 15px"></i>
+          <el-dropdown-menu v-slot="dropdown">
+            <el-dropdown-item><i class="el-icon-user-solid"></i><a href="userself.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">个人中心</a></el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="shoppingcart.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的购物车</a></el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="myorder.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的订单</a></el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-switch-button"></i><a href="login.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">退出登录</a></el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-col>
+
+      <span>金芒火炙蟹棒卷</span>
+      <el-avatar shape="circle" :size="45" :fit="'fill'" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+    </el-row>
   </el-header>
   <el-main>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }"><a href="indextext.html" style="text-decoration: none;">首页</a></el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }"><a href="index.html" style="text-decoration: none;">首页</a></el-breadcrumb-item>
       <el-breadcrumb-item><i class="el-icon-shopping-bag-2"></i>我的订单</el-breadcrumb-item>
     </el-breadcrumb>
   </el-main>
