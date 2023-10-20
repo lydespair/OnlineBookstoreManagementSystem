@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理员系统/书籍管理</title>
+    <link rel="shortcut icon" href="../img/mihuyo.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+<script src="//unpkg.com/vue@2/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+<div id="app">
+    <el-main>
+        <el-menu
+                class="el-menu-demo"
+                mode="horizontal"
+                background-color="#B3C0D1"
+                text-color="#fff"
+                active-text-color="#ffd04b">
+            <el-menu-item index="1"><a href="adminbook.html" target="_blank" style="text-decoration: none;color:#808080">书籍管理</a></el-menu-item>
+            <el-menu-item index="2"><a href="adminorder.html" target="_blank" style="text-decoration: none;color:#808080">订单管理</a></el-menu-item>
+            <el-menu-item index="3"><a href="adminUser.html" target="_blank" style="text-decoration: none;color:#808080">用户信息管理</a></el-menu-item>
+            <el-menu-item index="4"><a href="https://www.ele.me" target="_blank" style="text-decoration: none;color:#808080">上架图书</a></el-menu-item>
+        </el-menu>
+    </el-main>
+</div>
+
+
+<style>
+    @import url("//unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css");
+
+    .el-header {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .el-aside {
+        color: #333;
+    }
+
+    .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+</style>
+
+<script>
+    /* 用户头像js */
+    new Vue().$mount('#app')
+    /*搜索框*/
+
+    /*其他页面跳转*/
+    function topggleForm() {
+        var container = document.querySelector('.container');
+        container.classList.toggle('active');
+    }
+    /* 导航菜单 */
+    var Main = {
+        data() {
+            return {
+                activeIndex2: '1'
+            };
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+
+</body>
+<script type="text/javascript">
+    function abc() {
+        location.href = 'myorder.html'
+    }
+</script>
+</html>
