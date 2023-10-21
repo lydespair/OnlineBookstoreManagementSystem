@@ -6,7 +6,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>网上书店系统/我的订单</title>
-  <link rel="shortcut icon" href="img/mihuyo.ico">
+  <link rel="shortcut icon" href="../img/mihuyo.ico">
   <script src="https://code.jquery.com/jquery-3.6.0.js"
           integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
@@ -21,10 +21,10 @@
         <el-dropdown>
           <i class="el-icon-more-outline" style="margin-right: 15px"></i>
           <el-dropdown-menu v-slot="dropdown">
-            <el-dropdown-item><i class="el-icon-user-solid"></i><a href="userself.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">个人中心</a></el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-user-solid"></i><a href="../userself.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">个人中心</a></el-dropdown-item>
             <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="shoppingcart.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的购物车</a></el-dropdown-item>
             <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="myorder.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">我的订单</a></el-dropdown-item>
-            <el-dropdown-item><i class="el-icon-switch-button"></i><a href="login.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">退出登录</a></el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-switch-button"></i><a href="../login.html" onclick="topggleForm();" style="text-decoration: none;color:#808080">退出登录</a></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
@@ -35,7 +35,7 @@
   </el-header>
   <el-main>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }"><a href="index.html" style="text-decoration: none;">首页</a></el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }"><a href="oldindex.html" style="text-decoration: none;">首页</a></el-breadcrumb-item>
       <el-breadcrumb-item><i class="el-icon-shopping-bag-2"></i>我的订单</el-breadcrumb-item>
     </el-breadcrumb>
   </el-main>
@@ -146,7 +146,7 @@
     margin-left: 1200px;
   }
   body{
-    background:url("img/blackbackground.jpg");
+    background:url("../img/blackbackground.jpg");
     background-size:cover;
   }
   .order span{

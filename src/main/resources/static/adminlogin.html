@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>登录</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="shortcut icon" href="../img/mihuyo.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/mihuyo.ico">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,14 +15,14 @@
 
   <div class="container">
     <div class="user singinBx">
-      <div class="imgBx"><img src="../img/monkey.jpg" alt=""></div>
+      <div class="imgBx"><img src="img/monkey.jpg" alt=""></div>
       <div class="formBx">
         <form action="">
           <h2>管理员登录</h2>
           <input type="text" name="" id="name" placeholder="用户名" />
           <input type="password" name="" id="password" placeholder="密码" />
           <input type="submit" name="" value="登录" onclick="login();"/>
-          <p class="signup"><a href="../login.html" onclick="topggleForm();">普通用户登录</a></p>
+          <p class="signup"><a href="login.html" onclick="topggleForm();">普通用户登录</a></p>
         </form>
       </div>
     </div>
@@ -51,7 +51,7 @@
       //成功响应的结果
       success : function(data) {
         if (data != null) {
-          location.href = "adminbook.html";
+          location.href = "xitong.html";
         }
       }
     });

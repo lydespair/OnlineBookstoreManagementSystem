@@ -1,0 +1,147 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <title>听雨书屋</title>
+    <link rel="shortcut icon" href="img/mihuyo.ico">
+</head>
+
+<body>
+    <div class="top">
+        <div class="to">
+            <p>网罗天下图书 传承中华文明</p>
+            <ul>
+
+            </ul>
+        </div>
+        <div class="clearit"></div>
+    </div>
+
+    <div class="lg">
+        <div class="to">
+            <div class="logo"><img src="images/logo.jpg" /></div>
+
+            </div>
+        </div>
+        <div class="clearit"></div>
+    </div>
+
+    <div class="dao">
+        <ul>
+            <li><a href="index.html">返回首页</a></li>
+            <li><a href="xitong.html">图书信息</a></li>
+            <li><a href="kehu.html">客户信息</a></li>
+            <li><a href="../数据库课程设计/OnlineBookstoreManagementSystem/src/main/resources/static/dingdan.html">订单信息</a></li>
+        </ul>
+    </div>
+
+
+    <div class="nav">
+        <div class="da">
+
+            <div class="ban"><img src="images/ban.jpg" width="1000" height="327" /></div>
+            <div class="hao">
+                <h2>管理图书信息</h2>
+<br>
+<select id="orderType" style=" width:200px; height:40px;text-align:center;margin:0 auto;  ">
+    <option value="all">文学</option>
+    <option value="regular">流行</option>
+    <option value="group">文化</option>
+    <option value="group">生活</option>
+    <option value="group">科技</option>
+</select>
+  <button type="button" onclick="search()"  style=" width:60px; height:40px;text-align:center;margin:0 auto;">搜索</button>
+                <ul>
+                    <a href="detail.html"><li>
+                        <img src="images/c1.jpg" width="140" height="190" />
+                        <br />漫长的余生<br /><samp>罗新 著</samp><br />
+                        <il>￥65.00 起</il>
+                        <br>
+                        <il>库存 120 本</il>
+
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">增加库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">删除库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">修改价格</a></p>
+                    </li>
+                    </a>
+                    <a href="detail.html"><li>
+                        <img src="images/t2.jpg" width="140" height="190" /><br />红楼梦<br /><samp>  [清] 曹雪芹 著 / 高鹗
+                            著</samp><br />
+                        <il>￥60.00 起</il>
+                        <br>
+                        <il>库存 100 本</il>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">增加库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">删除库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">修改价格</a></p>
+                    </li>
+                    </a>
+                    <a href="detail.html"><li>
+                        <img src="images/t3.jpg" width="140" height="190" /><br />活着<br /><samp>余华 著
+                        </samp><br />
+                        <il>￥20.00 起</il>
+                        <br>
+                        <il>库存 80 本</il>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">增加库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">删除库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">修改价格</a></p>
+                    </li></a>
+                    <a href="detail.html"><li>
+                        <img src="images/c2.jpg" width="140" height="190" /><br />必有人重写爱情<br /><samp>北岛
+                            著</samp><br />
+                        <il>￥78.00 起</il>
+                        <br>
+                        <il>库存 150 本</il>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">增加库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">删除库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">修改价格</a></p>
+                    </li></a>
+                    <a href="detail.html"><li>
+                        <img src="images/c3.jpg" width="140" height="190" /><br />感知·理知·自我认知<br /><samp> 陈嘉映 著
+                        </samp><br />
+                        <il>￥58.00 起</il>
+                        <br>
+                        <il>库存 100 本</il>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">增加库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">删除库存</a></p>
+<br>
+<p style=" width:150px; height:30px; background:	#4B0082; margin:0 auto; text-align:center; line-height:31px; color:#FFF"><a href="#" style=" color:#FFF; font-size:14px;">修改价格</a></p>
+                    </li></a>
+
+                    </li></a>
+                </ul>
+                <div class="clearit"></div>
+            </div>
+<br>
+<tr>
+    <td><p style=" width:200px; height:40px; background:#8c222c; margin:0 auto; text-align:center; line-height:40px; color:#FFF"><a href="#" style=" color:#FFF; font-size:16px;">上一页</a></p></td>
+</tr>
+<br>
+<tr>
+    <td><p style=" width:200px; height:40px; background:#8c222c; margin:0 auto; text-align:center; line-height:40px; color:#FFF"><a href="#" style=" color:#FFF; font-size:16px;">下一页</a></p></td>
+</tr>
+<br>
+<tr>
+    <td><p style=" width:200px; height:40px; background:#8c222c; margin:0 auto; text-align:center; line-height:40px; color:#FFF"><a href="#" style=" color:#FFF; font-size:16px;">提交</a></p></td>
+</tr>
+<br>
+
+
+
+
+        <div class="foot">电子书店</div>
+    </div>
+</body>
+
+</html>
