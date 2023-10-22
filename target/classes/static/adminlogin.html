@@ -22,8 +22,8 @@
       <div class="formBx">
         <form action="">
           <h2>管理员登录</h2>
-          <input type="text" name="" id="name" placeholder="用户名" />
-          <input type="password" name="" id="password" placeholder="密码" />
+          <input v-model="admin.name" type="text" name="" id="name" placeholder="用户名" />
+          <input v-model="admin.password" type="password" name="" id="password" placeholder="密码" />
           <input type="button" name="" value="登录" onclick="login()"/>
           <p class="signup"><a href="login.html" onclick="topggleForm();">普通用户登录</a></p>
         </form>
@@ -35,36 +35,83 @@
 //----------------------------------------------------------
 <!-- 登录方法 -->
 <script>
-  function login() {
-    // 获取用户名和密码
-    let name = $("#name").val();
-    let password = $("#password").val();
-    $.ajax({
-      url : "/admins/login",
-      type : "post",
-      // data表示发送的数据
-      data : JSON.stringify({
-        userName : name,
-        userPassword : password
-      }),
-      // 定义发送请求的数据格式为JSON字符串
-      contentType : "application/json;charset=UTF-8",
-      //定义回调响应的数据格式为JSON字符串,该属性可以省略
-      dataType : "json",
-      //成功响应的结果
-      success : function(data) {
-        console.log(data);
-        if (data.code !== 0) {
-          document.cookie = "userData=data.data";
-          console.log(document.cookie);
-          location.href = "index.html";
-        } else {
-          alert("用户名或密码错误")
+  // function login() {
+  //   // 获取用户名和密码
+  //   // let name = $("#name").val();
+  //   // let password = $("#password").val();
+  //   $.ajax({
+  //     url : "/admins/login",
+  //     type : "post",
+  //     // data表示发送的数据
+  //     data : JSON.stringify({
+  //       userName : this.user.name,
+  //       userPassword : this.user.password
+  //     }),
+  //     // 定义发送请求的数据格式为JSON字符串
+  //     contentType : "application/json;charset=UTF-8",
+  //     //定义回调响应的数据格式为JSON字符串,该属性可以省略
+  //     dataType : "json",
+  //     //成功响应的结果
+  //     success : function(data) {
+  //       console.log(data);
+  //       if (data.code !== 0) {
+  //         document.cookie = "userData=data.data";
+  //         console.log(document.cookie);
+  //         location.href = "index.html";
+  //       } else {
+  //         alert("用户名或密码错误")
+  //       }
+  //     }
+  //
+  //   });
+  // }
+
+
+  const app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        admin: {
+          name: '',
+          password: ''
         }
       }
+    },
+    methods: {
+      login() {
+        console.log('sb');
+        // 获取用户名和密码
+        // let name = $("#name").val();
+        // let password = $("#password").val();
+        // console.log(name);
+        $.ajax({
+          url: "/admins/login",
+          type: "post",
+          // data表示发送的数据
+          data: JSON.stringify({
+            userName: this.admin.name,
+            userPassword: this.admin.password
+          }),
+          // 定义发送请求的数据格式为JSON字符串
+          contentType: "application/json;charset=UTF-8",
+          //定义回调响应的数据格式为JSON字符串,该属性可以省略
+          dataType: "json",
+          //成功响应的结果
+          success: function (data) {
+            console.log(data);
+            if (data.code !== 0) {
+              document.cookie = "userData=data.data";
+              console.log(document.cookie);
+              location.href = "xitong.html";
+            } else {
+              alert("用户名或密码错误")
+            }
 
-    });
-  }
+          }
+        });
+      }
+    }
+  })
 </script>
 </body>
 </html>
