@@ -100,7 +100,7 @@
           success: function (data) {
             console.log(data);
             if (data.code !== 0) {
-              document.cookie = "userData=data.data";
+              document.cookie = "adminData=data.data";
               console.log(document.cookie);
               location.href = "xitong.html";
             } else {
