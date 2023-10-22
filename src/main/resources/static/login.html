@@ -24,8 +24,8 @@
                     <input v-model="user.name" type="text" name="" id="name" placeholder="用户名"/>
                     <input v-model="user.password" type="password" name="" id="password" placeholder="密码"/>
                     <input type="button" name="" value="登录" onclick="login()"/>
-                    <p class="signup"><a href="adminlogin.html" onclick="topggleForm();">管理员登录</a></p>
-                    <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
+                    <p class="signup"><a href="adminlogin.html" onclick="topggleForm()">管理员登录</a></p>
+                    <p class="signup">没有账号？<a href="#" onclick="topggleForm()">注册</a></p>
                 </form>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <input type="password" name="" id="password2" placeholder="密码"/>
                     <input type="password" name="" placeholder="再次输入密码"/>
                     <input type="button" name="" value="注册" onclick="register()"/>
-                    <p class="signup">已有账号？<a href="#" onclick="topggleForm();">登录</a></p>
+                    <p class="signup">已有账号？<a href="#" onclick="topggleForm()">登录</a></p>
                 </form>
             </div>
             <div class="imgBx"><img src="img/2.jpg" alt=""></div>
@@ -129,6 +129,7 @@
 
 <script type="text/javascript">
     function topggleForm() {
+        console.log(1000)
         var container = document.querySelector('.container');
         container.classList.toggle('active');
     }

@@ -180,9 +180,6 @@ section .container.active .singinBx .imgBx {
         display: none;
     }
 
-    /*section .container .user .formBx {*/
-    /*    width: none;*/
-    /*}*/
 }
 
-@import url("//unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css");
+/*@import url("//unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css");*/
