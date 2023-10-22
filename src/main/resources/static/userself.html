@@ -9,10 +9,15 @@
     <link rel="shortcut icon" href="img/mihuyo.ico">
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <script src="//unpkg.com/vue@2/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
-<body background="img/blackbackground.jpg">
+<body>
+
 <div id="app">
     <el-header style="font-size: 12px">
         <el-row type="flex" justify="space-around" style="align-items: center; text-align: right">
@@ -58,7 +63,7 @@
                 <template>
                     <el-descriptions class="margin-top" title="" :column="3" :size="size" border>
                         <template slot="extra">
-                            <el-button type="primary" size="small" @click="getList()">修改</el-button>
+                            <el-button type="primary" size="small" @click="getList">修改</el-button>
                         </template>
                         <el-descriptions-item>
                             <template slot="label">
@@ -119,6 +124,35 @@
     </el-main>
 </div>
 
+<script>
+    const app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                squareUrl: "https://imgsa.baidu.com/forum/pic/item/a260fd246b600c33d091fa30144c510fd8f9a165.jpg",
+                value: new Date(),
+                textarea: '',
+                size: '',
+                fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
+                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+            }
+        },
+        methods: {
+            topggleForm() {
+                var container = document.querySelector('.container');
+                container.classList.toggle('active');
+            },
+            getList() {
+                console.log(1111)
+            }
+        }
+
+    })
+
+
+
+
+</script>
 
 <style>
     @import url("//unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css");
@@ -144,64 +178,6 @@
         line-height: 60px;
     }
 </style>
-
-<script type="module">
-    // new Vue().$mount('#app')
-    // export default {
-    //     data() {
-    //         return {
-    //             squareUrl: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-    //             value: new Date(),
-    //             textarea: '',
-    //             fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-    //             url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-    //         }
-    //     }
-    // }
-
-    const app = new Vue({
-        el: '#app',
-        data() {
-            return {
-                squareUrl: "https://imgsa.baidu.com/forum/pic/item/a260fd246b600c33d091fa30144c510fd8f9a165.jpg",
-                value: new Date(),
-                textarea: '',
-                size: '',
-                fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-            }
-        },
-        methods: {
-            topggleForm() {
-                var container = document.querySelector('.container');
-                container.classList.toggle('active');
-            },
-
-                 /** 查询数据列表 */
-             getList() {
-                this.loading = true
-                console.log("this.$route.params.appointId:", this.$route.params.appointId)
-
-                // listAppointmentUnitDetail(this.$route.params.appointId).then(response => {
-                //     this.appointUnitForm = response
-                //     console.log("response:", response)
-                //
-                //     this.loading = false
-                //
-                // })
-            }
-        }
-
-    })
-
-    /* 用户头像js */
-
-    /*搜索框*/
-
-    /*其他页面跳转*/
-
-
-</script>
 
 </body>
 </html>
