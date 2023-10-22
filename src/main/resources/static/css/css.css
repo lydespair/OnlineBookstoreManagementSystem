@@ -217,12 +217,12 @@ em {
 .pay_style_con input{float:left;margin:14px 7px 0 0;}
 .pay_style_con label{float:left;border:1px solid #ccc;background-color:#fff;padding:10px 10px 10px 40px;margin-right:25px}
 
-.pay_style_con .cash{background:url(pay_icons.png) 8px top no-repeat #fff;}
-.pay_style_con .weixin{background:url(pay_icons.png) 6px -36px no-repeat #fff;}
+.pay_style_con .cash{background:url(../images/pay_icons.png) 8px top no-repeat #fff;}
+.pay_style_con .weixin{background:url(../images/pay_icons.png) 6px -36px no-repeat #fff;}
 
-.pay_style_con .zhifubao{background:url(pay_icons.png) 12px -72px no-repeat #fff;width:50px;height:16px}
+.pay_style_con .zhifubao{background:url(../images/pay_icons.png) 12px -72px no-repeat #fff;width:50px;height:16px}
 
-.pay_style_con .bank{background:url(pay_icons.png) 6px -108px no-repeat #fff;}
+.pay_style_con .bank{background:url(../images/pay_icons.png) 6px -108px no-repeat #fff;}
 
 
 .goods_list_th{height:40px;border-bottom:1px solid #ccc}
