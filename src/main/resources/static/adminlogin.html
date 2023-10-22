@@ -44,8 +44,8 @@
       type : "post",
       // data表示发送的数据
       data : JSON.stringify({
-        userName : name,
-        userPassword : password
+        userName : this.user.name,
+        userPassword : this.user.password
       }),
       // 定义发送请求的数据格式为JSON字符串
       contentType : "application/json;charset=UTF-8",
