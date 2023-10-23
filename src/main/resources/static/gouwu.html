@@ -104,6 +104,80 @@
 
         <div class="foot">电子书店</div>
     </div>
+<script>
+
+    // 计算小计和总计
+    function updateSubtotal() {
+        var rows = document.querySelectorAll('.item-row');
+        var total = 0;
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var price = parseFloat(row.querySelector('td:nth-child(3)').textContent);
+            var quantity = parseInt(row.querySelector('input[name="quantity[]"]').value);
+            var subtotal = price * quantity;
+            row.querySelector('.subtotal').textContent = subtotal.toFixed(2);
+            total += subtotal;
+        }
+        document.querySelector('#total').textContent = total.toFixed(2);
+    }
+
+    // 删除商品
+    function deleteItem() {
+        var row = this.parentNode;
+        row.parentNode.removeChild(row);
+        updateSubtotal();
+    }
+
+    // 添加商品
+    function addItem() {
+        var table = document.querySelector('table');
+        var row = table.insertRow(-1);
+        row.classList.add('item-row');
+        row.dataset.id = Date.now(); // 生成一个随机ID
+        row.innerHTML = `
+				<td class="check"><input type="checkbox" name="item[]" value="${row.dataset.id}"></td>
+				<td><input type="text" name="name[]"></td>
+				<td><input type="number" name="price[]" step="0.01"></td>
+				<td><input type="number" name="quantity[]" value="1"></td>
+				<td class="subtotal">0.00</td>
+				<td class="delete">X</td>
+			`;
+        row.querySelector('.delete').addEventListener('click', deleteItem);
+        row.querySelector('input[name="quantity[]"]').addEventListener('input', updateSubtotal);
+        row.querySelector('input[name="price[]"]').addEventListener('input', updateSubtotal);
+    }
+
+    // 结算选中的商品
+    function checkout() {
+        var items = document.querySelectorAll('input[name="item[]"]:checked');
+        var ids = [];
+        for (var i = 0; i < items.length; i++) {
+            ids.push(items[i].value);
+        }
+        if (ids.length > 0) {
+            window.location.href = 'checkout.php?ids=' + ids.join(',');
+        } else {
+            alert('请选择要结算的商品');
+        }
+    }
+
+    // 绑定事件
+    var deleteButtons = document.querySelectorAll('.delete');
+    for (var i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', deleteItem);
+    }
+    var addBtn = document.querySelector('#add');
+    addBtn.addEventListener('click', addItem);
+    var quantityInputs = document.querySelectorAll('input[name="quantity[]"]');
+    for (var i = 0; i < quantityInputs.length; i++) {
+        quantityInputs[i].addEventListener('input', updateSubtotal);
+    }
+    var priceInputs = document.querySelectorAll('input[name="price[]"]');
+    for (var i = 0; i < priceInputs.length; i++) {
+        priceInputs[i].addEventListener('input', updateSubtotal);
+    }
+</script>
 </body>
+
 
 </html>

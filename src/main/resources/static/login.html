@@ -82,8 +82,7 @@
                         if (res.code !== 0) {
                             console.log(res)
                             sessionStorage.setItem('user',JSON.stringify(res.data))
-                            localStorage.setItem('jwtToken',JSON.stringify(res.token))
-                            localStorage.setItem('username',JSON.stringify(res.data))
+                            sessionStorage.setItem('token', JSON.stringify(res.token))
                             location.href = "index.html"
                         } else {
                             alert("用户名或密码错误")
