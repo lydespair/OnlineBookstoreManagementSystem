@@ -189,6 +189,7 @@
                 this.dialogVisible = true
                 const user = sessionStorage.getItem('user');
                 var cur = JSON.parse(user);
+
                 this.form.name = cur.userName
                 this.form.tel = cur.tel
                 this.form.address = cur.address
