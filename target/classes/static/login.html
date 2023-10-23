@@ -81,6 +81,7 @@
                     success: function (res) {
                         if (res.code !== 0) {
                             console.log(res)
+                            sessionStorage.setItem('user',JSON.stringify(res.data))
                             localStorage.setItem('jwtToken',JSON.stringify(res.token))
                             localStorage.setItem('username',JSON.stringify(res.data))
                             location.href = "index.html"
