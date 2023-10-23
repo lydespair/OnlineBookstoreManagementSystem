@@ -78,12 +78,12 @@
                     //定义回调响应的数据格式为JSON字符串,该属性可以省略
                     dataType: "json",
                     //成功响应的结果
-                    success: function (data) {
-                        console.log(data);
-                        if (data.code !== 0) {
-                            document.cookie = "userData=data.data";
-                            console.log(document.cookie);
-                            location.href = "index.html";
+                    success: function (res) {
+                        if (res.code !== 0) {
+                            console.log(res)
+                            localStorage.setItem('jwtToken',JSON.stringify(res.token))
+                            localStorage.setItem('username',JSON.stringify(res.data))
+                            location.href = "index.html"
                         } else {
                             alert("用户名或密码错误")
                         }
