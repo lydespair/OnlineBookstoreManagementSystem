@@ -223,9 +223,9 @@
                         if (data.code !== 0) {
                             document.cookie = "userData=data.data";
                             console.log(document.cookie);
-                            location.href = "index.html";
+                            alert("修改成功！")
                         } else {
-                            alert("修改失败，数据不合法")
+                            alert("修改失败，用户名重复或数据不合法")
                         }
                     }
                 })
