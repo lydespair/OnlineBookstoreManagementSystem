@@ -77,11 +77,14 @@
                 <template>
                     <el-descriptions class="margin-top" title="" :column="3" :size="size" border>
                         <template slot="extra">
-                            <el-button type="primary" size="small" @click="getList">修改</el-button>
+                            <el-button type="primary" size="small" @click="getList()">修改</el-button>
                             <el-dialog title="个人信息" :visible.sync="dialogVisible" width="30%">
                                 <el-form ref="form" :model="form" label-width="80px">
                                     <el-form-item label="用户名">
-                                        <el-input v-model="form.name"></el-input>
+                                        <el-input v-model="form.userName"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="密码">
+                                        <el-input v-model="form.userPassword"></el-input>
                                     </el-form-item>
                                     <el-form-item label="手机号">
                                         <el-input v-model="form.tel"></el-input>
@@ -94,7 +97,7 @@
                                     </el-form-item>
                                 </el-form>
                                 <span slot="footer" class="dialog-footer">
-                                    <el-button type="primary" @click="update">确 定 修 改</el-button>
+                                    <el-button :plain="true" type="primary" @click="open1()">确 定 修 改</el-button>
                                     <el-button @click="dialogVisible = false">取 消</el-button>
                                  </span>
                             </el-dialog>
@@ -163,21 +166,21 @@
         el: '#app',
         data() {
             return {
-
                 dialogVisible: false,
-                form: {
-                    name: '',
-                    tel:'',
-                    address: '',
-                    email: ''
-                },
-
                 squareUrl: "https://imgsa.baidu.com/forum/pic/item/a260fd246b600c33d091fa30144c510fd8f9a165.jpg",
                 value: new Date(),
                 textarea: '',
                 size: '',
                 fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
                 url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+            }
+        },
+        computed: {
+            user() {
+                return JSON.parse(sessionStorage.getItem('user'))
+            },
+            form() {
+                return this.user
             }
         },
         methods: {
@@ -187,18 +190,49 @@
             },
             getList() {
                 this.dialogVisible = true
-                const user = sessionStorage.getItem('user');
-                var cur = JSON.parse(user);
-
-                this.form.name = cur.userName
-                this.form.tel = cur.tel
-                this.form.address = cur.address
-                this.form.email = cur.email
-                // const author = JSON.parse(localStorage.getItem('jwtToken'))
-                // console.log(author)
+            },
+            open1() {
+                console.log(sessionStorage.getItem('token'))
+                $.ajax({
+                    url: "/users",
+                    //this.name为cookie的内容
+                    type: "put",
+                    headers: {
+                        token: sessionStorage.getItem('token')
+                    },
+                    // data表示发送的数据
+                    data: JSON.stringify(this.form),
+                    // 定义发送请求的数据格式为JSON字符串
+                    contentType: "application/json;charset=UTF-8",
+                    //定义回调响应的数据格式为JSON字符串,该属性可以省略
+                    dataType: "json",
+                    //成功响应的结果
+                    success: (data) => {
+                        console.log(data);
+                        if (data.code !== 0) {
+                            this.$message({
+                                showClose: true,
+                                message: '修改成功！',
+                                type: 'success'
+                            });
+                            // let prevData = JSON.parse(sessionStorage.getItem('user'));
+                            // Object.keys(value).forEach(function(val, key) {
+                            //     prevData[val] = value[val];
+                            // })
+                            // sessionStorage.setItem('user', JSON.stringify(prevData))
+                        }
+                        else {
+                            this.$message({
+                                showClose: true,
+                                message: '用户名重复！',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+                this.dialogVisible = false
             },
             update() {
-                this.dialogVisible = false
                 console.log(sessionStorage.getItem('token'))
                 $.ajax({
                     url: "/users",
@@ -224,14 +258,11 @@
                         if (data.code !== 0) {
                             document.cookie = "userData=data.data";
                             console.log(document.cookie);
-                            alert("修改成功！")
-                        } else {
-                            alert("修改失败，用户名重复或数据不合法")
                         }
                     }
                 })
+                this.dialogVisible = false
             }
-
         }
     })
 

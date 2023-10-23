@@ -83,6 +83,7 @@
                             console.log(res)
                             sessionStorage.setItem('user',JSON.stringify(res.data))
                             sessionStorage.setItem('token', res.token)
+                            localStorage.setItem('token', res.token)
                             location.href = "index.html"
                         } else {
                             alert("用户名或密码错误")
