@@ -30,11 +30,11 @@
                                                                                onclick="topggleForm();"
                                                                                style="text-decoration: none;color:#808080">个人中心</a>
                         </el-dropdown-item>
-                        <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="vuehtml/shoppingcart.html"
+                        <el-dropdown-item><i class="el-icon-shopping-cart-2"></i><a href="gouwu.html"
                                                                                     onclick="topggleForm();"
                                                                                     style="text-decoration: none;color:#808080">我的购物车</a>
                         </el-dropdown-item>
-                        <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="vuehtml/myorder.html"
+                        <el-dropdown-item><i class="el-icon-shopping-bag-2"></i><a href="pay.html"
                                                                                    onclick="topggleForm();"
                                                                                    style="text-decoration: none;color:#808080">我的订单</a>
                         </el-dropdown-item>
@@ -198,15 +198,21 @@
             },
             update() {
                 this.dialogVisible = false
+                console.log(sessionStorage.getItem('token'))
                 $.ajax({
                     url: "/users",
                     //this.name为cookie的内容
                     type: "put",
                     headers: {
-                        Authorization: localStorage.getItem('token')
+                        token: sessionStorage.getItem('token')
                     },
                     // data表示发送的数据
-                    data: JSON.stringify({cur}),
+                    data: JSON.stringify({
+                        userName: this.form.name,
+                        tle: this.form.tel,
+                        address: this.form.address,
+                        email: this.form.email,
+                    }),
                     // 定义发送请求的数据格式为JSON字符串
                     contentType: "application/json;charset=UTF-8",
                     //定义回调响应的数据格式为JSON字符串,该属性可以省略
@@ -219,7 +225,7 @@
                             console.log(document.cookie);
                             location.href = "index.html";
                         } else {
-                            alert("用户名或密码错误")
+                            alert("修改失败，数据不合法")
                         }
                     }
                 })
