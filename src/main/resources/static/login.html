@@ -23,7 +23,7 @@
                     <h2>登录</h2>
                     <input v-model="user.name" type="text" name="" id="name" placeholder="用户名"/>
                     <input v-model="user.password" type="password" name="" id="password" placeholder="密码"/>
-                    <input type="button" name="" value="登录" onclick="login()"/>
+                    <input type="button" name="" value="登录" @click="login()"/>
                     <p class="signup"><a href="adminlogin.html" onclick="topggleForm()">管理员登录</a></p>
                     <p class="signup">没有账号？<a href="#" onclick="topggleForm()">注册</a></p>
                 </form>
@@ -65,36 +65,30 @@
         },
         methods: {
             login() {
-                console.log('sb');
-        // 获取用户名和密码
-        // let name = $("#name").val();
-        // let password = $("#password").val();
-        // console.log(name);
-            $.ajax({
-                url: "/users/login",
-                type: "post",
-                // data表示发送的数据
-                data: JSON.stringify({
-                    userName: this.user.name,
-                    userPassword: this.user.password
-                }),
-                // 定义发送请求的数据格式为JSON字符串
-                contentType: "application/json;charset=UTF-8",
-                //定义回调响应的数据格式为JSON字符串,该属性可以省略
-                dataType: "json",
-                //成功响应的结果
-                success: function (data) {
-                    console.log(data);
-                    if (data.code !== 0) {
-                        document.cookie = "userData=data.data";
-                        console.log(document.cookie);
-                        location.href = "index.html";
-                    } else {
-                        alert("用户名或密码错误")
+                $.ajax({
+                    url: "/users/login",
+                    type: "post",
+                    // data表示发送的数据
+                    data: JSON.stringify({
+                        userName: this.user.name,
+                        userPassword: this.user.password
+                    }),
+                    // 定义发送请求的数据格式为JSON字符串
+                    contentType: "application/json;charset=UTF-8",
+                    //定义回调响应的数据格式为JSON字符串,该属性可以省略
+                    dataType: "json",
+                    //成功响应的结果
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code !== 0) {
+                            document.cookie = "userData=data.data";
+                            console.log(document.cookie);
+                            location.href = "index.html";
+                        } else {
+                            alert("用户名或密码错误")
+                        }
                     }
-
-                }
-            });
+                })
             }
         }
     })
