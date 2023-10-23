@@ -100,6 +100,7 @@ public class UserController {
             claims.put("name", u.getUserName());
             claims.put("username", u.getUserName());
             String jwt = JwtUtils.generateJwt(claims);
+            log.info("令牌：{}", jwt);
             return Result.success(u, jwt);
         }
         return Result.error("用户名或密码错误");
