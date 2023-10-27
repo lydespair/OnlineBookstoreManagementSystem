@@ -18,10 +18,10 @@ public class UploadController {
     private AliOSSUtils aliOSSUtils;
 
     @PostMapping("/upload")
-    public Result upload(MultipartFile image) throws IOException {
-        log.info("文件上传, 文件名: {}", image.getOriginalFilename());
+    public Result upload(MultipartFile file) throws IOException {
+        log.info("文件上传, 文件名: {}", file.getOriginalFilename());
 
-        String url = aliOSSUtils.upload(image);
+        String url = aliOSSUtils.upload(file);
         log.info("文件上传完成, 文件访问的url: {}", url);
 
         return Result.success(url);

@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping
     public Result list(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "5") Integer pageSize,
+                       @RequestParam(defaultValue = "10") Integer pageSize,
                        @RequestParam(defaultValue = "") String name) {
         log.info("查询全部的用户数据");
 

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Book {
     private String bookName;
     private short type;
-    private String ISBW;
+    private String ISBN;
     private String publisher;
     private float price;
     private String author;

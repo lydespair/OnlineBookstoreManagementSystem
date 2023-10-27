@@ -15,4 +15,5 @@ public class User {
     private String tel;
     private String email;
     private String image;
+    private Integer state;
 }

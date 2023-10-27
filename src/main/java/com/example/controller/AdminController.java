@@ -38,7 +38,7 @@ public class AdminController {
             claims.put("id", r.getAdminId());
             claims.put("name", r.getAdminName());
             String jwt = JwtUtils.generateJwt(claims);
-            return Result.success(jwt);
+            return Result.success(r, jwt);
         }
         return Result.error("用户名或密码错误");
     }

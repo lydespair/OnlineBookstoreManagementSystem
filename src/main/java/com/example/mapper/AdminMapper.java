@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface AdminMapper {
 
-    @Select("select * from admin where admin_id = #{adminId} and admin_pwd = #{adminPwd}")
+    @Select("select * from admin where admin_name = #{adminName} and admin_pwd = #{adminPwd}")
     Admin login(Admin root);
 }

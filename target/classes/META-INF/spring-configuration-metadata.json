@@ -8,12 +8,12 @@
   ],
   "properties": [
     {
-      "name": "aliyun.oss.access-key",
+      "name": "aliyun.oss.access-key-id",
       "type": "java.lang.String",
       "sourceType": "com.example.utils.AliOSSProperties"
     },
     {
-      "name": "aliyun.oss.access-secret",
+      "name": "aliyun.oss.access-key-secret",
       "type": "java.lang.String",
       "sourceType": "com.example.utils.AliOSSProperties"
     },
