@@ -23,8 +23,8 @@ public class AliOSSUtils {
     public String upload(MultipartFile file) throws IOException {
 
         String endpoint = aliOSSProperties.getEndpoint();
-        String accessKeyId = aliOSSProperties.getAccessKey();
-        String accessKeySecret = aliOSSProperties.getAccessSecret();
+        String accessKeyId = aliOSSProperties.getAccessKeyId();
+        String accessKeySecret = aliOSSProperties.getAccessKeySecret();
         String bucketName = aliOSSProperties.getBucketName();
         // 获取上传的文件的输入流
         InputStream inputStream = file.getInputStream();

@@ -1,6 +1,8 @@
 package com.example.utils;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AliOSSProperties {
     private String endpoint;
-    private String accessKey;
-    private String accessSecret;
+    private String accessKeyId;
+    private String accessKeySecret;
     private String bucketName;
 }
