@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mapper.BookMapper">
     <delete id="delete">
-        delete from book where ISBW in
+        delete from book where ISBN in
         <foreach collection="ids" item="id" separator=", " open="(" close=")">
             #{id}
         </foreach>
@@ -15,7 +15,7 @@
                 type = #{type}
             </if>
             <if test="name != null and name != ''">
-                and book_name like concat('%', #{name}, '%')
+                and (book_name like concat('%', #{name}, '%') or author like concat('%', #{name}, '%') or ISBN = #{name})
             </if>
         </where>
     </select>
