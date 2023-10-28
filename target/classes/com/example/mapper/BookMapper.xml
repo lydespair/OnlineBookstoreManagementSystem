@@ -15,7 +15,8 @@
                 type = #{type}
             </if>
             <if test="name != null and name != ''">
-                and (book_name like concat('%', #{name}, '%') or author like concat('%', #{name}, '%') or ISBN = #{name})
+                and (book_name like concat('%', #{name}, '%') or author
+        like concat('%', #{name}, '%') or ISBN = #{name})
             </if>
         </where>
     </select>

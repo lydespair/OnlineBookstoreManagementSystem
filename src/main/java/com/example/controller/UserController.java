@@ -31,11 +31,12 @@ public class UserController {
 
     @GetMapping
     public Result list(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "10") Integer pageSize,
-                       @RequestParam(defaultValue = "") String name) {
-        log.info("查询全部的用户数据");
+                       @RequestParam(defaultValue = "100") Integer pageSize,
+                       @RequestParam(defaultValue = "") String key,
+                       @RequestParam(defaultValue = "") Integer type) {
+        log.info("查询key: {}", type);
 
-        PageBean pageBean = userService.list(page, pageSize, name);
+        PageBean pageBean = userService.list(page, pageSize, key, type);
         return Result.success(pageBean);
     }
 
@@ -51,13 +52,6 @@ public class UserController {
         log.info("新增用户：{}", user);
         userService.add(user);
         return Result.success();
-    }
-
-    @GetMapping("/{name}")
-    public Result getByName(@PathVariable String name) {
-        log.info("根据name查找用户:{}", name);
-        User user = userService.getByName(name);
-        return Result.success(user);
     }
 
     @PutMapping

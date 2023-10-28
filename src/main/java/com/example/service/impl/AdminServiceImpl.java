@@ -20,12 +20,13 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
     @Override
-    public List<Order> selectOrder(Order order) {
-        return orderMapper.selectOrder(order);
+    public List<Order> selectOrder(Integer orderId) {
+        return orderMapper.selectOrder(orderId);
     }
 
     @Override
     public Admin login(Admin root) {
         return adminMapper.login(root);
     }
+
 }

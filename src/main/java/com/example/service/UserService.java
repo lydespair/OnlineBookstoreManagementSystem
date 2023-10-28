@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserService {
 
 //    查询全部用户
-    PageBean list(Integer page, Integer pageSize, String name);
+    PageBean list(Integer page, Integer pageSize, String key, Integer type);
 
     void delete(List<Integer> ids);
 

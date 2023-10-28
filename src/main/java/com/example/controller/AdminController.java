@@ -24,8 +24,9 @@ public class AdminController {
 
 //    可根据用户id和订单id查询
     @GetMapping
-    public Result selectOrder(@RequestBody Order order) {
-        List<Order> orderList = adminService.selectOrder(order);
+    public Result selectOrder(@RequestParam(defaultValue = "-1") Integer orderId) {
+        log.info("orderId：{}", orderId);
+        List<Order> orderList = adminService.selectOrder(orderId);
         return Result.success(orderList);
     }
 

@@ -19,8 +19,11 @@
         select *
         from user
         <where>
-            <if test="name != null and name != ''">
-                user_name like concat('%', #{name}, '%')
+            <if test="type != null">
+                state = #{type}
+            </if>
+            <if test="key != null and key != ''">
+                and (user_name like concat('%', #{key}, '%') or user_id = #{key})
             </if>
         </where>
     </select>

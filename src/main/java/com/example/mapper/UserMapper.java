@@ -11,7 +11,7 @@ public interface UserMapper {
     
 
     //    查询全部用户
-    List<User> list(String name);
+    List<User> list(String key, Integer type);
 
     void deleteById(List<Integer> ids);
 
@@ -24,7 +24,7 @@ public interface UserMapper {
 
     @Update("update user " +
             "set user_name = #{userName}, user_password = #{userPassword}, user.address = #{address}, " +
-            "user.tel = #{tel}, user.email = #{email}, image = #{image} where user_id = #{userId}")
+            "user.tel = #{tel}, user.email = #{email}, image = #{image}, state = #{state} where user_id = #{userId}")
     void update(User user);
 
     @Select("select * from user where user_name = #{userName} and user_password = #{userPassword}")
