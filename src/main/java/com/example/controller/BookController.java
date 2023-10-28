@@ -25,6 +25,16 @@ public class BookController {
         return Result.success(pageBean);
     }
 
+    @PostMapping
+    public Result add(@RequestBody Book book) {
+        bookService.add(book);
+        return Result.success();
+    }
+    @GetMapping("/counts")
+    public Result counts() {
+        Integer num = bookService.counts();
+        return Result.success(num);
+    }
     @GetMapping("/ranks")
     public Result rank(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5") Integer pageSize) {
@@ -34,18 +44,10 @@ public class BookController {
 
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable List<Integer> ids) {
-
         bookService.delete(ids);
         return Result.success();
     }
 
-
-    @GetMapping("/{ISBN}")
-    public Result getByISBN(@PathVariable String ISBN) {
-        log.info("根据ISBN查找图书:{}", ISBN);
-        Book book = bookService.getByISBN(ISBN);
-        return Result.success(book);
-    }
     @PutMapping
     public Result update(@RequestBody Book book) {
         log.info("修改图书信息");

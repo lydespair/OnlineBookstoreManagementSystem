@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.pojo.Book;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -28,4 +29,13 @@ public interface BookMapper {
 
     @Select("select * from book where ISBN = #{ISBN}")
     Book getByISBN(String ISBN);
+
+    @Select("select count(*) from book")
+    Integer counts();
+
+    @Insert("insert into book (isbn, book_name, type, publisher," +
+            " price, author, publish_date, count, image, `describe`) " +
+            "values (#{ISBN}, #{bookName}, #{type}, #{publisher}, #{price}," +
+            " #{author}, #{publishDate}, #{count}, #{image}, #{describe})")
+    void insert(Book book);
 }

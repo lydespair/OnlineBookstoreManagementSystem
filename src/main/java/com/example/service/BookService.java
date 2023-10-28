@@ -18,4 +18,8 @@ public interface BookService {
     void update(Book book);
 
     Book getByISBN(String ISBN);
+
+    Integer counts();
+
+    void add(Book book);
 }

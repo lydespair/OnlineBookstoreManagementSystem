@@ -67,4 +67,14 @@ public class BookServiceImpl implements BookService {
     public Book getByISBN(String ISBN) {
         return bookMapper.getByISBN(ISBN);
     }
+
+    @Override
+    public Integer counts() {
+        return bookMapper.counts();
+    }
+
+    @Override
+    public void add(Book book) {
+        bookMapper.insert(book);
+    }
 }
