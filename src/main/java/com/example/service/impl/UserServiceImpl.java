@@ -84,4 +84,9 @@ public class UserServiceImpl implements UserService {
         order.setState((short) 1);
         orderMapper.addCart(order);
     }
+
+    @Override
+    public Integer counts() {
+        return userMapper.selectAll();
+    }
 }

@@ -39,4 +39,7 @@ public interface UserMapper {
 
     @Select("select * from user where user_id = #{userId}")
     User selectUserById(Integer userId);
+
+    @Select("select count(*) from user")
+    Integer selectAll();
 }

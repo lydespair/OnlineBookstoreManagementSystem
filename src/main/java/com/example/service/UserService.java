@@ -29,4 +29,6 @@ public interface UserService {
     void pay(Order order);
 
     void addCart(Order order);
+
+    Integer counts();
 }

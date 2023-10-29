@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping
     public Result list(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "100") Integer pageSize,
+                       @RequestParam(defaultValue = "10") Integer pageSize,
                        @RequestParam(defaultValue = "") String key,
                        @RequestParam(defaultValue = "") Integer type) {
         log.info("查询key: {}", type);
@@ -61,6 +61,11 @@ public class UserController {
         return Result.success();
     }
 
+    @GetMapping("/counts")
+    public Result counts() {
+        Integer count = userService.counts();
+        return Result.success(count);
+    }
     //查询订单 {
 //      state: 0 -> 已支付
 //             1 -> 待付款
