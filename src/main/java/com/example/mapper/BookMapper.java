@@ -38,4 +38,7 @@ public interface BookMapper {
             "values (#{ISBN}, #{bookName}, #{type}, #{publisher}, #{price}," +
             " #{author}, #{publishDate}, #{count}, #{image}, #{describe})")
     void insert(Book book);
+
+    @Select("select * from book where ISBN = #{isbn}")
+    Book selectByISBN(String isbn);
 }

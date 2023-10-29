@@ -24,4 +24,7 @@ public interface OrderMapper {
     void addCart(Order order);
 
     List<Order> selectOrder(Integer orderId);
+
+    @Select("select * from `order` where order_id = #{orderId}")
+    Order selectOrderById(Integer orderId);
 }

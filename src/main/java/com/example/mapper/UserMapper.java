@@ -36,4 +36,7 @@ public interface UserMapper {
 
     @Select("select * from `order` where state = #{state}")
     List<Order> shoppingCart(Integer state);
+
+    @Select("select * from user where user_id = #{userId}")
+    User selectUserById(Integer userId);
 }
