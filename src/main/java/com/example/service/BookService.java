@@ -22,4 +22,6 @@ public interface BookService {
     Integer counts();
 
     void add(Book book);
+
+    Book findByIsbn(String ISBN);
 }

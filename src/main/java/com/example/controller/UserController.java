@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.pojo.Book;
+import com.example.pojo.Cart;
 import com.example.pojo.Order;
 import com.example.service.BookService;
 import com.example.utils.JwtUtils;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.Objects;
 
 
+@CrossOrigin
 @Slf4j
 @RestController
 @RequestMapping("/users")
@@ -31,7 +33,7 @@ public class UserController {
 
     @GetMapping
     public Result list(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "10") Integer pageSize,
+                       @RequestParam(defaultValue = "100") Integer pageSize,
                        @RequestParam(defaultValue = "") String key,
                        @RequestParam(defaultValue = "") Integer type) {
         log.info("查询key: {}", type);
@@ -47,6 +49,11 @@ public class UserController {
         return Result.success();
     }
 
+    @GetMapping("/exact")
+    public Result findByUserId(@RequestParam Integer userId) {
+        User user = userService.findByUserId(userId);
+        return Result.success(user);
+    }
     @PostMapping
     public Result add(@RequestBody User user) {
         log.info("新增用户：{}", user);
@@ -66,20 +73,27 @@ public class UserController {
         Integer count = userService.counts();
         return Result.success(count);
     }
-    //查询订单 {
-//      state: 0 -> 已支付
-//             1 -> 待付款
-//    }
+
     @GetMapping("/cart")
-    public Result cart(Integer state) {
-        List<Order> orderList = userService.cart(state);
-        return Result.success(orderList);
+    public Result cart(@RequestParam(defaultValue = "") Integer userId) {
+        List<Cart> cartList = userService.cart(userId);
+        return Result.success(cartList);
     }
 
     //加入购物车
-    @PostMapping("/addCart")
-    public Result addCart(@RequestBody Order order) {
-        userService.addCart(order);
+    @GetMapping("/addCart")
+    public Result addCart(@RequestParam(defaultValue = "0") Integer userId,
+                          @RequestParam(defaultValue = "") String ISBN,
+                          @RequestParam(defaultValue = "1") Integer count) {
+        log.info("data: {}", userId);
+        userService.addCart(userId, ISBN, count);
+        return Result.success();
+    }
+
+    @PostMapping("/cart")
+    public Result deleteCart(@RequestBody List<Integer> list) {
+        log.info("删除：{}", list);
+        userService.deleteCart(list);
         return Result.success();
     }
 

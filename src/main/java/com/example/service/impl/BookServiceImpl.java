@@ -17,16 +17,6 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
 
-//    @Override
-//    public PageBean page(Integer page, Integer pageSize) {
-//
-//        long count = bookMapper.count();
-//        Integer start = (page - 1) * pageSize;
-//        List<Book> bookList = bookMapper.page(start, pageSize);
-//
-//        PageBean pageBean = new PageBean(count, bookList);
-//        return pageBean;
-//    }
     @Override
     public PageBean page(Integer page, Integer pageSize, Integer type, String name) {
 
@@ -76,5 +66,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public void add(Book book) {
         bookMapper.insert(book);
+    }
+
+    @Override
+    public Book findByIsbn(String ISBN) {
+        return bookMapper.selectByISBN(ISBN);
     }
 }

@@ -11,7 +11,7 @@
         select *
         from book
         <where>
-            <if test="type != null">
+            <if test="type != null and type != 0">
                 type = #{type}
             </if>
             <if test="name != null and name != ''">

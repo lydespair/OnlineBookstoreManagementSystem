@@ -27,6 +27,7 @@ public class BookController {
 
     @PostMapping
     public Result add(@RequestBody Book book) {
+        log.info("添加图书：{}", book);
         bookService.add(book);
         return Result.success();
     }
@@ -48,6 +49,11 @@ public class BookController {
         return Result.success();
     }
 
+    @GetMapping("/id")
+    public Result findByIsbn(@RequestParam(defaultValue = "") String ISBN) {
+        Book book = bookService.findByIsbn(ISBN);
+        return Result.success(book);
+    }
     @PutMapping
     public Result update(@RequestBody Book book) {
         log.info("修改图书信息");

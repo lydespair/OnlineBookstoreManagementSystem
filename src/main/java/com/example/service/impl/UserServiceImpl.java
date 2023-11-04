@@ -1,7 +1,9 @@
 package com.example.service.impl;
 
+import com.example.mapper.CartMapper;
 import com.example.mapper.OrderMapper;
 import com.example.mapper.UserMapper;
+import com.example.pojo.Cart;
 import com.example.pojo.Order;
 import com.example.utils.PageBean;
 import com.example.pojo.User;
@@ -22,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private CartMapper cartMapper;
 
     @Override
     public PageBean list(Integer page, Integer pageSize, String key, Integer type) {
@@ -65,28 +70,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Order> cart(Integer state) {
-        return orderMapper.cart(state);
+    public List<Cart> cart(Integer userId) {
+        return cartMapper.select(userId);
     }
 
     @Override
     public void pay(Order order) {
-        order.setState((short) 0);
-        order.setCreateTime(LocalDateTime.now());
-        order.setUpdateTime(LocalDateTime.now());
-        orderMapper.add(order);
-    }
 
-    @Override
-    public void addCart(Order order) {
-        order.setCreateTime(LocalDateTime.now());
-        order.setUpdateTime(LocalDateTime.now());
-        order.setState((short) 1);
-        orderMapper.addCart(order);
     }
 
     @Override
     public Integer counts() {
         return userMapper.selectAll();
+    }
+
+    @Override
+    public void addCart(Integer userId, String ISBN, Integer count) {
+        cartMapper.insert(userId, ISBN, count);
+    }
+
+    @Override
+    public void deleteCart(List<Integer> list) {
+        cartMapper.deleteCart(list);
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+        return userMapper.findByUserId(userId);
     }
 }

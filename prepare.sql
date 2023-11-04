@@ -83,6 +83,11 @@ INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, em
 INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (8, 'user5', '0555555', '北京', '13004000843', 'www123@outlook.com', null, 1);
 INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (9, 'user6', '0666666', '北京', '13001000876', 'www123@outlook.com', null, 1);
 INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (10, 'user7', '0777777', '北京', '13110000876', 'www123@outlook.com', null, 1);
+INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (12, 'test', '666', '广东广州', '42352356366', null, null, 2);
+INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (14, '369789', '666', '广东深圳', '13001000020', null, null, 1);
+INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (17, '命名映射', '999', '江苏南京', '11301000323', null, null, 1);
+INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (19, 'Giftia', '000111', null, null, null, null, 1);
+INSERT INTO bookseller.user (user_id, user_name, user_password, address, tel, email, image, state) VALUES (20, 'Giftia02', '000111', null, null, null, null, 2);
 
 
 INSERT INTO bookseller.book (ISBN, book_name, type, publisher, price, author, publish_date, count, image, `describe`, sales) VALUES ('9787020104345', '悲惨世界-(全三册)', 1, '人民文学出版社', 110, '雨果', '1992-06-01', 50, 'https://kdl-you.oss-cn-wuhan-lr.aliyuncs.com/cbf360d9-426d-4b0d-9517-c638631587cf.jpg', '《悲惨世界(上中下)(精)》是雨果在流亡期间写的长篇小说，是他的代表作，也是世界文学宝库的珍品之一。 《悲惨世界(上中下)(精)》通过冉阿让等人的悲惨遭遇以及冉阿让被卞福汝主教感化后一系列令人感动的事迹，深刻揭露和批判了19世纪法国封建专制社会的腐朽本质及其罪恶现象，对穷苦人民在封建重压下所遭受的剥削欺诈和残酷迫害表示了悲悯和同情。', 350);

@@ -60,8 +60,8 @@ public class AdminController {
     }
 
     @GetMapping("/findByISBN")
-    public Result findByISBN(@RequestParam(defaultValue = "") String isbn) {
-        Book book = adminService.findByISBN(isbn);
+    public Result findByISBN(@RequestParam(defaultValue = "") String ISBN) {
+        Book book = adminService.findByISBN(ISBN);
         return Result.success(book);
     }
 }

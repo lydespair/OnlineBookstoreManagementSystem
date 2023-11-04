@@ -34,12 +34,12 @@ public interface UserMapper {
             "values (#{userName}, #{userPassword})")
     void register(User user);
 
-    @Select("select * from `order` where state = #{state}")
-    List<Order> shoppingCart(Integer state);
-
     @Select("select * from user where user_id = #{userId}")
     User selectUserById(Integer userId);
 
     @Select("select count(*) from user")
     Integer selectAll();
+
+    @Select("select * from user where user_id = #{userId}")
+    User findByUserId(Integer userId);
 }

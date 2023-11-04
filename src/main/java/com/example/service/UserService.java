@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.pojo.Cart;
 import com.example.pojo.Order;
 import com.example.utils.PageBean;
 import com.example.pojo.User;
@@ -24,11 +25,15 @@ public interface UserService {
 
     void register(User user);
 
-    List<Order> cart(Integer state);
+    List<Cart> cart(Integer userId);
 
     void pay(Order order);
 
-    void addCart(Order order);
-
     Integer counts();
+
+    void addCart(Integer userId, String ISBN, Integer count);
+
+    void deleteCart(List<Integer> list);
+
+    User findByUserId(Integer userId);
 }
