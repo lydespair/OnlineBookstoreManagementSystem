@@ -1,7 +1,7 @@
 aliyun:
     oss:
-        accessKeyId: LTAI5t7G5Eou5WyiwPrgNm3x
-        accessKeySecret: RmcQTOVKRUV7sqmCY312dk5tx1gyKF
+        accessKeyId: xxxxxxxxx
+        accessKeySecret: xxxxxxxxx
         bucketName: kdl-you
         endpoint: https://oss-cn-wuhan-lr.aliyuncs.com
 mybatis:
